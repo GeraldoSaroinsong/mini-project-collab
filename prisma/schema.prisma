@@ -11,6 +11,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model Event {
@@ -25,6 +26,7 @@ model Event {
   id_location Int
   image String
   isPaidEvent Boolean
+  isPaid Boolean
 
   @@map("events")
 }
