@@ -1,32 +1,183 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
-model Event {
-  id Int @id @default(autoincrement())
-  title String
-  date DateTime
-  desc String
+model User {
+  id           Int     @id @default(autoincrement())
+  name         String
+  email        String
+  password     String
+  phone        String?
+  role         Role
+  image        String?
+  referralCode String  @unique
+
+  // PENGGUNAAN REFERRAL CODE
+  usingReferralCode String?
+  referralCodeUsed  User?   @relation("UseReferralCode", fields: [usingReferralCode], references: [referralCode])
+  usedBy            User[]  @relation("UseReferralCode")
+
+  // Sistem Poin dan Coupon
+  pointBalance    Int        @default(0)
+  expiredDates    DateTime[]
+  coupon          Boolean    @default(false)
+  couponExpiredAt DateTime   @default(now())
+
+  // Atribut Organizer
+  organizationName    String?
+  organizationEmail   String?
+  organizationPhone   String?
+  organizationAddress String?
+
+  // Relasi
+  events       Event[]       @relation("EventOrganizer")
+  transactions Transaction[] @relation("UserTransactions")
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  id_organizer Int
-  id_category Int
-  id_location Int
-  image String
+
+  @@map("users")
+}
+
+enum Role {
+  user
+  organizer
+}
+
+model Event {
+  id          Int       @id @default(autoincrement())
+  title       String
+  desc        String
   isPaidEvent Boolean
-  isPaid Boolean
+  price       Int?
+  startDate   DateTime?
+  endDate     DateTime?
+  image       String
+
+  // ? Relasi
+  id_organizer Int
+  organizer    User @relation("EventOrganizer", fields: [id_organizer], references: [id])
+
+  id_city Int
+  city    City @relation("EventCity", fields: [id_city], references: [id])
+
+  id_category Int
+  categories  CategoriesOnEvents[] @relation("EventCategories")
+
+  promotions   Promotion[]   @relation("EventPromotions")
+  transactions Transaction[] @relation("EventTransactions")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("events")
+}
+
+model Category {
+  id   Int    @id @default(autoincrement())
+  name String @default("Kategori")
+
+  events CategoriesOnEvents[] @relation("CategoryEvents")
+
+  @@map("categories")
+}
+
+model CategoriesOnEvents {
+  id_event Int
+  event    Event @relation("EventCategories", fields: [id_event], references: [id])
+
+  id_category Int
+  category    Category @relation("CategoryEvents", fields: [id_category], references: [id])
+
+  @@id([id_event, id_category])
+}
+
+model City {
+  id   Int    @id @default(autoincrement())
+  name String @default("Kota")
+
+  events Event[] @relation("EventCity")
+
+  @@map("cities")
+}
+
+model Promotion {
+  id             Int      @id @default(autoincrement())
+  name           String
+  discountAmount Int
+  quantity       Int
+  startDate      DateTime @default(now())
+  endDate        DateTime
+
+  id_event     Int
+  event        Event         @relation("EventPromotions", fields: [id_event], references: [id])
+  transactions Transaction[] @relation("PromotionTransactions")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("promotions")
+}
+
+model Transaction {
+  id                   Int               @id @default(autoincrement())
+  quantity             Int               @default(1)
+  subtotal             Int
+  referralCouponIsUsed Boolean           @default(false)
+  pointsUsed           Int
+  total                Int
+  status               TransactionStatus @default(process)
+
+  id_user      Int
+  user         User       @relation("UserTransactions", fields: [id_user], references: [id])
+  id_event     Int
+  event        Event      @relation("EventTransactions", fields: [id_event], references: [id])
+  id_promotion Int
+  promotion    Promotion? @relation("PromotionTransactions", fields: [id_promotion], references: [id])
+
+  payments Payment? @relation("TransactionPayment")
+  rating   Rating?  @relation("TransactionRating")
+
+  createdAt DateTime @default(now())
+  expiredAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("transactions")
+}
+
+enum TransactionStatus {
+  success
+  process
+  failed
+}
+
+model Rating {
+  id     Int     @id @default(autoincrement())
+  rating Int
+  review String?
+  image  String?
+
+  id_transaction Int         @unique
+  transaction    Transaction @relation("TransactionRating", fields: [id_transaction], references: [id])
+
+  @@map("ratings")
+}
+
+model Payment {
+  id     Int     @id @default(autoincrement())
+  status Boolean @default(false)
+
+  id_transaction Int         @unique
+  transaction    Transaction @relation("TransactionPayment", fields: [id_transaction], references: [id])
+
+  createdAt   DateTime  @default(now())
+  completedAt DateTime?
+
+  @@map("payments")
 }
