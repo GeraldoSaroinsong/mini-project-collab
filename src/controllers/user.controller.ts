@@ -3,6 +3,8 @@ import responseHandler from "../utils/response";
 import userService from "../services/user.service";
 import { parse } from "path";
 import { sign } from "jsonwebtoken";
+import userDal from "../dal/user.dal";
+import { tokenGenerator } from "../utils/tokenGenerator";
 
 // CONTOH IMPORT LAIN
 // import { hashPassword } from "../utils/hashPassword";
@@ -22,13 +24,13 @@ export class UserController {
             const result = await userService.serviceUserRegsiter(req.body);
             return responseHandler.succes(
                 res,
-                "THIS CONTROLLER IS WORKING",
+                "SUCCESSFULLY CREATED NEW USER",
                 201,
                 { result }
             );
         } catch (error: any) {
             // console.log(error);
-            return responseHandler.error(res, "CONTROLLER FAILED", 500, error);
+            return responseHandler.error(res, error.message, 500, error);
         }
     }
 
@@ -75,7 +77,7 @@ export class UserController {
         }
     }
 
-    async daleteUser(
+    async deleteUser(
         req: Request,
         res: Response,
         next: NextFunction
@@ -104,21 +106,23 @@ export class UserController {
     ): Promise<any> {
         try {
             // ? YOUR CODE HERE
-            // const result = await userService.serviceUserDelete(
-            //     parseInt(req.params.id)
-            // );
+            const findUser = await userDal.dalUserUnique({
+                id: res.locals.decrypt.id,
+                email: res.locals.decrypt.email,
+            });
 
-            const token = sign(
-                { id: req.body.id, email: req.body.email },
-                process.env.TOKEN_KEY || "test"
-            );
+            if (!findUser) {
+                throw { rc: 400, message: `user is not exist` };
+            }
 
-            return responseHandler.succes(
-                res,
-                "THIS CONTROLLER IS WORKING",
-                201,
-                { token }
-            );
+            const token = tokenGenerator(findUser);
+
+            return responseHandler.succes(res, "USER FOUND, KEEPLOGIN", 201, {
+                name: findUser.name,
+                email: findUser.email,
+                username: findUser.username,
+                token: token,
+            });
         } catch (error: any) {
             // console.log(error);
             return responseHandler.error(res, "CONTROLLER FAILED", 500, error);
