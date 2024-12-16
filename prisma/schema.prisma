@@ -11,9 +11,9 @@ datasource db {
 model User {
   id           Int     @id @default(autoincrement())
   name         String
-  email        String
+  email        String @unique
   password     String
-  phone        String?
+  phone        String? @unique
   role         Role
   image        String?
   referralCode String  @unique
@@ -30,10 +30,10 @@ model User {
   couponExpiredAt DateTime   @default(now())
 
   // Atribut Organizer
-  organizationName    String?
-  organizationEmail   String?
-  organizationPhone   String?
-  organizationAddress String?
+  organizationName    String? @unique
+  organizationEmail   String? @unique
+  organizationPhone   String? @unique
+  organizationAddress String? @unique
 
   // Relasi
   events       Event[]       @relation("EventOrganizer")
