@@ -5,6 +5,7 @@ import cors from "cors";
 import response from "./utils/response";
 import { UserRouter } from "./routers/user.router";
 import { EventRouter } from "./routers/event.router";
+import { CityRouter } from "./routers/city.router";
 
 // ? Import Routers di bawah. contoh
 // import {UserRouter} from "./routers/userRouter"
@@ -37,10 +38,12 @@ class App {
     // ? definisikan router yang nanti digunkaan di app.use. contoh:
     const userRouter = new UserRouter();
     const eventRouter = new EventRouter();
+    const cityRouter = new CityRouter();
 
     // ? penggunaan router yg sudah didefinisikan. contoh:
     this.app.use("/user", userRouter.getRouter());
     this.app.use("/event", eventRouter.getRouter());
+    this.app.use("/city", cityRouter.getRouter());
   }
 
   private errorHandler(): void {
