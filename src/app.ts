@@ -6,6 +6,7 @@ import response from "./utils/response";
 import { UserRouter } from "./routers/user.router";
 import { EventRouter } from "./routers/event.router";
 import { CityRouter } from "./routers/city.router";
+import { CategoryRouter } from "./routers/category.router";
 
 // ? Import Routers di bawah. contoh
 // import {UserRouter} from "./routers/userRouter"
@@ -39,11 +40,13 @@ class App {
     const userRouter = new UserRouter();
     const eventRouter = new EventRouter();
     const cityRouter = new CityRouter();
+    const cateogryRouter = new CategoryRouter();
 
     // ? penggunaan router yg sudah didefinisikan. contoh:
     this.app.use("/user", userRouter.getRouter());
     this.app.use("/event", eventRouter.getRouter());
     this.app.use("/city", cityRouter.getRouter());
+    this.app.use("/category", cateogryRouter.getRouter());
   }
 
   private errorHandler(): void {

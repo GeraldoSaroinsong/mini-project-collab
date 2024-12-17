@@ -12,10 +12,10 @@ export class CityRouter {
   }
 
   private initializeRoutes(): void {
-    this.route.post("/city", this.cityController.addCity);
-    this.route.get("/city/:id", this.cityController.getCityById);
-    this.route.patch("/city/:id", this.cityController.updateCity);
-    this.route.delete("/city/:id", this.cityController.deleteCity);
+    this.route.post("/", this.cityController.addCity);
+    this.route.get("/:id", this.cityController.getCityById);
+    this.route.patch("/:id", this.cityController.updateCity);
+    this.route.delete("/:id", this.cityController.deleteCity);
   }
 
   public getRouter(): Router {
