@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { UserController } from "../controllers/user.controller";
+import { loginValidation, regisValidation } from "../middleware/validator";
+import { verifyToken } from "../middleware/verifyToken";
 
 // ? IMPORT CONTROLLERS(AND MIDDLEWARES). CONTOH:
 // import { UserController } from "../controllers/user.controller";
@@ -21,11 +23,23 @@ export class UserRouter {
 
     private initializeRoutes(): void {
         // ? DEFINE ENDPOINTS HERE. CONTOH
-        this.route.post("/register", this.userController.registerUser);
-        this.route.post("/login", this.userController.loginUser);
+        this.route.post(
+            "/register",
+            regisValidation,
+            this.userController.registerUser
+        );
+        this.route.post(
+            "/login",
+            loginValidation,
+            this.userController.loginUser
+        );
         this.route.patch("/update/:id", this.userController.updateUser);
-        this.route.delete("/delete/:id", this.userController.daleteUser);
-        this.route.post("/keep-login", this.userController.keepLoginUser);
+        this.route.delete("/delete/:id", this.userController.deleteUser);
+        this.route.post(
+            "/keep-login",
+            verifyToken,
+            this.userController.keepLoginUser
+        );
         this.route.get("/user/:id", this.userController.registerUser);
     }
 

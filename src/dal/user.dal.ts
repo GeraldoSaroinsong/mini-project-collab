@@ -13,7 +13,7 @@ class DalUser {
 
             return result;
         } catch (error: any) {
-            throw error;
+            throw {rc:400, message:`DAL failed to create new user`};
         }
     }
 

@@ -1,12 +1,13 @@
 export interface IUser {
     name: string;
     email: string;
+    username: string;
     password: string;
     phone: string;
     role: "user" | "organizer";
-    image: string;
+    image?: string;
     referralCode: string;
-    usingReferralCode: string;
+    usingReferralCode?: string;
     pointBalace: number;
 }
 

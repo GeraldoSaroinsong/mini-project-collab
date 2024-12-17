@@ -1,17 +1,25 @@
 // ? IMPORT DAL's HERE. CONTOH
-import { sign } from "jsonwebtoken";
+import { sign, TokenExpiredError } from "jsonwebtoken";
 import DalUser from "../dal/user.dal";
 import { ILogin, IUser, IUserUpdate } from "../interfaces/user.interface";
 import { hashPassword } from "../utils/hashPassword";
+import { referralGenerator } from "../utils/referralGenerator";
+import { compareSync } from "bcrypt";
+import { tokenGenerator } from "../utils/tokenGenerator";
 
 // ? INTERFACE IF NEEDED
 
 class ServiceUser {
     // ? YOUR METHODS HERE
-    async serviceUserRegsiter(dataUser: IUser): Promise<any> {
+    async serviceUserRegsiter(
+        dataUser: IUser
+    ): Promise<{ newUser: any; token: string }> {
         try {
             // ? YOUR BUSINESS CODE HERE
-            const isExistUser = await DalUser.dalUserUnique(dataUser);
+            const isExistUser = await DalUser.dalUserUnique({
+                email: dataUser.email,
+            });
+
             if (isExistUser) {
                 throw {
                     rc: 400,
@@ -19,39 +27,58 @@ class ServiceUser {
                 };
             }
 
+            // ? atribut yg perlu diproses
             const hashedPassword = await hashPassword(dataUser.password);
+            const newRefferalCode = referralGenerator(dataUser.username);
 
             // ? PEMANGGILAN DAL HERE
             const newUser = await DalUser.dalUserRegister({
                 ...dataUser,
                 password: hashedPassword,
+                referralCode: newRefferalCode,
             });
 
-            const token = sign(
-                { id: newUser.id, email: newUser.email, role: newUser.role },
-                process.env.TOKEN_KEY || "test",
-                { expiresIn: "1h" }
-            );
+            const token = tokenGenerator(newUser);
 
-            return newUser;
+            return { newUser, token };
         } catch (error: any) {
-            throw error;
+            throw { rc: 500, message: `register controller error` };
         }
     }
 
     async serviceUserLogin(dataUser: ILogin): Promise<any> {
         try {
-            // ? YOUR BUSINESS CODE HERE
-            if (true) {
-                console.log("INI ADALAH PERKONDISIAN DI DALAM SERVICE");
-            } else {
-                throw { rc: 400, message: "Error di perkondisian service" };
+            const findUser = await DalUser.dalUserUnique({
+                email: dataUser.email,
+            });
+
+            if (!findUser) {
+                throw {
+                    rc: 400,
+                    message: `user ${dataUser.email} is not exist`,
+                };
             }
 
-            // ? PEMANGGILAN DAL HERE
-            const loginUser = await DalUser.dalUserLogin(dataUser);
+            const comparePassword = compareSync(
+                dataUser.password,
+                findUser.password
+            );
 
-            return loginUser;
+            if (!comparePassword) {
+                throw {
+                    rc: 400,
+                    message: `password is wrong`,
+                };
+            }
+
+            const token = tokenGenerator(findUser);
+
+            return {
+                name: findUser.name,
+                email: findUser.email,
+                username: findUser.username,
+                token,
+            };
         } catch (error: any) {
             throw error;
         }

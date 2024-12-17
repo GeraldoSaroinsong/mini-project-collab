@@ -4,7 +4,7 @@ import { Router } from "express";
 // import { UserController } from "../controllers/user.controller";
 // import { regisValidation } from "../middleware/validator";
 
-export class UserRouter {
+export class ContohRouter {
     private route: Router;
     // ? DEFINE PROPS HERE. CONTOH:
     // private userController: UserController;
