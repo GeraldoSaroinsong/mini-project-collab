@@ -8,6 +8,9 @@ import { EventRouter } from "./routers/event.router";
 import { CityRouter } from "./routers/city.router";
 import { CategoryRouter } from "./routers/category.router";
 import { CategoriesOnEventsRouter } from "./routers/categoriesOnEvents.router";
+import { PromotionRouter } from "./routers/promotion.router";
+import { RatingController } from "./controllers/rating.controller";
+import { RatingRouter } from "./routers/rating.router";
 
 // ? Import Routers di bawah. contoh
 // import {UserRouter} from "./routers/userRouter"
@@ -37,20 +40,12 @@ class App {
       res.status(200).send("<h1>MINPRO API</h1>");
     });
 
-    // ? definisikan router yang nanti digunkaan di app.use. contoh:
-    const userRouter = new UserRouter();
-    const eventRouter = new EventRouter();
-    const cityRouter = new CityRouter();
-    const cateogryRouter = new CategoryRouter();
-    const catOnEventsRouter = new CategoriesOnEventsRouter();
+        // ? definisikan router yang nanti digunkaan di app.use. contoh:
+        const userRouter = new UserRouter();
 
-    // ? penggunaan router yg sudah didefinisikan. contoh:
-    this.app.use("/user", userRouter.getRouter());
-    this.app.use("/event", eventRouter.getRouter());
-    this.app.use("/city", cityRouter.getRouter());
-    this.app.use("/category", cateogryRouter.getRouter());
-    this.app.use("/categories-on-events", catOnEventsRouter.getRouter());
-  }
+        // ? penggunaan router yg sudah didefinisikan. contoh:
+        this.app.use("/user", userRouter.getRouter());
+    }
 
   private errorHandler(): void {
     this.app.use(

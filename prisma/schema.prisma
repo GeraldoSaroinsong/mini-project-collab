@@ -58,9 +58,11 @@ model Event {
   desc        String
   isPaidEvent Boolean
   price       Int?
+  isActive  Boolean @default(true)
   startDate   DateTime?
   endDate     DateTime?
   image       String
+
 
   // ? Relasi
   id_organizer Int
@@ -113,11 +115,13 @@ model City {
 
 model Promotion {
   id             Int      @id @default(autoincrement())
-  name           String
-  discountAmount Int
-  quantity       Int
+  name           String 
+  discountAmount Int @default(10)
+  quantity       Int @default(0)
   startDate      DateTime @default(now())
-  endDate        DateTime
+  endDate        DateTime @default(now())
+
+  status Boolean @default(true)
 
   id_event     Int
   event        Event         @relation("EventPromotions", fields: [id_event], references: [id])
@@ -163,7 +167,7 @@ enum TransactionStatus {
 
 model Rating {
   id     Int     @id @default(autoincrement())
-  rating Int
+  rating Int @default(0)
   review String?
   image  String?
 
@@ -172,6 +176,7 @@ model Rating {
 
   @@map("ratings")
 }
+
 
 model Payment {
   id     Int     @id @default(autoincrement())
