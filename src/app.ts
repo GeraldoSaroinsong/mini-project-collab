@@ -11,6 +11,7 @@ import { CategoriesOnEventsRouter } from "./routers/categoriesOnEvents.router";
 import { PromotionRouter } from "./routers/promotion.router";
 import { RatingRouter } from "./routers/rating.router";
 import { PaymentRouter } from "./routers/payment.router";
+import { TransactionRouter } from "./routers/transaction.route";
 
 // ? Import Routers di bawah. contoh
 // import {UserRouter} from "./routers/userRouter"
@@ -47,6 +48,7 @@ class App {
         const paymentRouter = new PaymentRouter();
         const promotionRouter = new PromotionRouter();
         const ratingRouter = new RatingRouter();
+        const transactionRouter = new TransactionRouter();
 
         // ? penggunaan router yg sudah didefinisikan. contoh:
         this.app.use("/user", userRouter.getRouter());
@@ -57,6 +59,7 @@ class App {
         this.app.use("/payment", paymentRouter.getRouter());
         this.app.use("/promotion", promotionRouter.getRouter());
         this.app.use("/rating", ratingRouter.getRouter());
+        this.app.use("/transaction", transactionRouter.getRouter());
     }
 
     private errorHandler(): void {
