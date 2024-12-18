@@ -4,6 +4,9 @@ import express, { Request, Response, NextFunction, Application } from "express";
 import cors from "cors";
 import response from "./utils/response";
 import { UserRouter } from "./routers/user.router";
+import { PromotionRouter } from "./routers/promotion.router";
+import { RatingController } from "./controllers/rating.controller";
+import { RatingRouter } from "./routers/rating.router";
 
 // ? Import Routers di bawah. contoh
 // import {UserRouter} from "./routers/userRouter"
@@ -35,9 +38,13 @@ class App {
 
         // ? definisikan router yang nanti digunkaan di app.use. contoh:
         const userRouter = new UserRouter();
+        const promotionRouter = new PromotionRouter();
+        const ratingRouter = new RatingRouter();
 
         // ? penggunaan router yg sudah didefinisikan. contoh:
         this.app.use("/user", userRouter.getRouter());
+        this.app.use("/promotion", promotionRouter.getRouter());
+        this.app.use("/rating", ratingRouter.getRouter());
     }
 
     private errorHandler(): void {
