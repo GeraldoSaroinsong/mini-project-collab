@@ -146,6 +146,7 @@ exports.Prisma.EventScalarFieldEnum = {
   desc: 'desc',
   isPaidEvent: 'isPaidEvent',
   price: 'price',
+  isActive: 'isActive',
   startDate: 'startDate',
   endDate: 'endDate',
   image: 'image',
@@ -178,6 +179,7 @@ exports.Prisma.PromotionScalarFieldEnum = {
   quantity: 'quantity',
   startDate: 'startDate',
   endDate: 'endDate',
+  status: 'status',
   id_event: 'id_event',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

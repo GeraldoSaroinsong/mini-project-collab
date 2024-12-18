@@ -20,6 +20,7 @@ export class PaymentController {
             return responseHandler.error(res, error.message, 500, error);
         }
     }
+
     async getPayment(
         req: Request,
         res: Response,
@@ -37,14 +38,40 @@ export class PaymentController {
             return responseHandler.error(res, error.message, 500, error);
         }
     }
+
+    async getPaymentById(
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ): Promise<any> {
+        try {
+            const findPayment = await prisma.payment.findUnique({
+                where: { id: parseInt(req.params.id) },
+            });
+            return responseHandler.succes(
+                res,
+                `SUCCESSFULLY GET PAYMENT`,
+                200,
+                findPayment
+            );
+        } catch (error: any) {
+            return responseHandler.error(res, error.message, 500, error);
+        }
+    }
+
     async getPaymentByUser(
         req: Request,
         res: Response,
         next: NextFunction
     ): Promise<any> {
         try {
-            const findPayment = await prisma.payment.findMany({
-                where: req.body,
+            const findPayment = await prisma.user.findMany({
+                select: {
+                    transactions: {
+                        select: { payment: true },
+                    },
+                },
+                where: { id: parseInt(req.params.id) },
             });
             return responseHandler.succes(
                 res,
@@ -56,6 +83,7 @@ export class PaymentController {
             return responseHandler.error(res, error.message, 500, error);
         }
     }
+
     async updatePayment(
         req: Request,
         res: Response,
@@ -71,6 +99,26 @@ export class PaymentController {
                 `SUCCESSFULLY UPDATE PAYMENT`,
                 200,
                 updatePayment
+            );
+        } catch (error: any) {
+            return responseHandler.error(res, error.message, 500, error);
+        }
+    }
+
+    async deletePayment(
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ): Promise<any> {
+        try {
+            const deletePayment = await prisma.payment.delete({
+                where: { id: parseInt(req.params.id) },
+            });
+            return responseHandler.succes(
+                res,
+                `SUCCESSFULLY UPDATE PAYMENT`,
+                200,
+                deletePayment
             );
         } catch (error: any) {
             return responseHandler.error(res, error.message, 500, error);
