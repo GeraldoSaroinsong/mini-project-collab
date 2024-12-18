@@ -23,7 +23,8 @@ class UserRouter {
         this.route.patch("/update/:id", this.userController.updateUser);
         this.route.delete("/delete/:id", this.userController.deleteUser);
         this.route.post("/keep-login", verifyToken_1.verifyToken, this.userController.keepLoginUser);
-        this.route.get("/user/:id", this.userController.registerUser);
+
+        this.route.get("/user/:id", this.userController.uniqueUser);
     }
     getRouter() {
         return this.route;
