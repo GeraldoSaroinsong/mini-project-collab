@@ -9,8 +9,9 @@ import { CityRouter } from "./routers/city.router";
 import { CategoryRouter } from "./routers/category.router";
 import { CategoriesOnEventsRouter } from "./routers/categoriesOnEvents.router";
 import { PromotionRouter } from "./routers/promotion.router";
-import { RatingController } from "./controllers/rating.controller";
 import { RatingRouter } from "./routers/rating.router";
+import { PaymentRouter } from "./routers/payment.router";
+import { TransactionRouter } from "./routers/transaction.route";
 
 // ? Import Routers di bawah. contoh
 // import {UserRouter} from "./routers/userRouter"
@@ -31,8 +32,6 @@ class App {
     private configure(): void {
         this.app.use(cors());
         this.app.use(express.json());
-        // middleware for direct access
-        // this.app.use("/", express.static(path.join(__dirname, "../public")));
     }
 
     private routes(): void {
@@ -42,9 +41,25 @@ class App {
 
         // ? definisikan router yang nanti digunkaan di app.use. contoh:
         const userRouter = new UserRouter();
+        const catOnEvRouter = new CategoriesOnEventsRouter();
+        const categoryRouter = new CategoryRouter();
+        const cityRouter = new CityRouter();
+        const eventRouter = new EventRouter();
+        const paymentRouter = new PaymentRouter();
+        const promotionRouter = new PromotionRouter();
+        const ratingRouter = new RatingRouter();
+        const transactionRouter = new TransactionRouter();
 
         // ? penggunaan router yg sudah didefinisikan. contoh:
         this.app.use("/user", userRouter.getRouter());
+        this.app.use("/category-on-event", catOnEvRouter.getRouter());
+        this.app.use("/category", categoryRouter.getRouter());
+        this.app.use("/city", cityRouter.getRouter());
+        this.app.use("/event", eventRouter.getRouter());
+        this.app.use("/payment", paymentRouter.getRouter());
+        this.app.use("/promotion", promotionRouter.getRouter());
+        this.app.use("/rating", ratingRouter.getRouter());
+        this.app.use("/transaction", transactionRouter.getRouter());
     }
 
     private errorHandler(): void {
