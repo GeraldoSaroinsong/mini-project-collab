@@ -61,7 +61,7 @@ export class CategoryController {
     next: NextFunction
   ): Promise<any> {
     try {
-      const cateogry = await prisma.cateogry.findUniqe({
+      const cateogry = await prisma.category.findUnique({
         where: {
           id: parseInt(req.params.id),
         },

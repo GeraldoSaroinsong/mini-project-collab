@@ -51,7 +51,7 @@ export class EventController {
     next: NextFunction
   ): Promise<any> {
     try {
-      const event = await prisma.event.findUniqe({
+      const event = await prisma.event.findUnique({
         where: {
           id: parseInt(req.params.id),
         },

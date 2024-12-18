@@ -14,15 +14,15 @@ export class CategoriesOnEventsRouter {
   private initializeRoutes(): void {
     this.route.post("/", this.catOnEventsController.createCategoriesOnEvent);
     this.route.get("/", this.catOnEventsController.getCategoriesOnEvent);
-    this.route.get("/:id", this.catOnEventsController.getCategoriesOnEventById);
-    this.route.patch(
-      "/:id",
-      this.catOnEventsController.updateCategoriesOnEvent
-    );
-    this.route.delete(
-      "/:id",
-      this.catOnEventsController.deleteCategoriesOnEvent
-    );
+    // this.route.get("/:id", this.catOnEventsController.getCategoriesOnEventById);
+    // this.route.patch(
+    //   "/:id",
+    //   this.catOnEventsController.updateCategoriesOnEvent
+    // );
+    // this.route.delete(
+    //   "/:id",
+    //   this.catOnEventsController.deleteCategoriesOnEvent
+    // );
   }
 
   public getRouter(): Router {
