@@ -3020,6 +3020,7 @@ export namespace Prisma {
     desc: string | null
     isPaidEvent: boolean | null
     price: number | null
+    isActive: boolean | null
     startDate: Date | null
     endDate: Date | null
     image: string | null
@@ -3036,6 +3037,7 @@ export namespace Prisma {
     desc: string | null
     isPaidEvent: boolean | null
     price: number | null
+    isActive: boolean | null
     startDate: Date | null
     endDate: Date | null
     image: string | null
@@ -3052,6 +3054,7 @@ export namespace Prisma {
     desc: number
     isPaidEvent: number
     price: number
+    isActive: number
     startDate: number
     endDate: number
     image: number
@@ -3086,6 +3089,7 @@ export namespace Prisma {
     desc?: true
     isPaidEvent?: true
     price?: true
+    isActive?: true
     startDate?: true
     endDate?: true
     image?: true
@@ -3102,6 +3106,7 @@ export namespace Prisma {
     desc?: true
     isPaidEvent?: true
     price?: true
+    isActive?: true
     startDate?: true
     endDate?: true
     image?: true
@@ -3118,6 +3123,7 @@ export namespace Prisma {
     desc?: true
     isPaidEvent?: true
     price?: true
+    isActive?: true
     startDate?: true
     endDate?: true
     image?: true
@@ -3221,6 +3227,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price: number | null
+    isActive: boolean
     startDate: Date | null
     endDate: Date | null
     image: string
@@ -3256,6 +3263,7 @@ export namespace Prisma {
     desc?: boolean
     isPaidEvent?: boolean
     price?: boolean
+    isActive?: boolean
     startDate?: boolean
     endDate?: boolean
     image?: boolean
@@ -3278,6 +3286,7 @@ export namespace Prisma {
     desc?: boolean
     isPaidEvent?: boolean
     price?: boolean
+    isActive?: boolean
     startDate?: boolean
     endDate?: boolean
     image?: boolean
@@ -3296,6 +3305,7 @@ export namespace Prisma {
     desc?: boolean
     isPaidEvent?: boolean
     price?: boolean
+    isActive?: boolean
     startDate?: boolean
     endDate?: boolean
     image?: boolean
@@ -3334,6 +3344,7 @@ export namespace Prisma {
       desc: string
       isPaidEvent: boolean
       price: number | null
+      isActive: boolean
       startDate: Date | null
       endDate: Date | null
       image: string
@@ -3745,6 +3756,7 @@ export namespace Prisma {
     readonly desc: FieldRef<"Event", 'String'>
     readonly isPaidEvent: FieldRef<"Event", 'Boolean'>
     readonly price: FieldRef<"Event", 'Int'>
+    readonly isActive: FieldRef<"Event", 'Boolean'>
     readonly startDate: FieldRef<"Event", 'DateTime'>
     readonly endDate: FieldRef<"Event", 'DateTime'>
     readonly image: FieldRef<"Event", 'String'>
@@ -7011,6 +7023,7 @@ export namespace Prisma {
     quantity: number | null
     startDate: Date | null
     endDate: Date | null
+    status: boolean | null
     id_event: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -7023,6 +7036,7 @@ export namespace Prisma {
     quantity: number | null
     startDate: Date | null
     endDate: Date | null
+    status: boolean | null
     id_event: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -7035,6 +7049,7 @@ export namespace Prisma {
     quantity: number
     startDate: number
     endDate: number
+    status: number
     id_event: number
     createdAt: number
     updatedAt: number
@@ -7063,6 +7078,7 @@ export namespace Prisma {
     quantity?: true
     startDate?: true
     endDate?: true
+    status?: true
     id_event?: true
     createdAt?: true
     updatedAt?: true
@@ -7075,6 +7091,7 @@ export namespace Prisma {
     quantity?: true
     startDate?: true
     endDate?: true
+    status?: true
     id_event?: true
     createdAt?: true
     updatedAt?: true
@@ -7087,6 +7104,7 @@ export namespace Prisma {
     quantity?: true
     startDate?: true
     endDate?: true
+    status?: true
     id_event?: true
     createdAt?: true
     updatedAt?: true
@@ -7186,6 +7204,7 @@ export namespace Prisma {
     quantity: number
     startDate: Date
     endDate: Date
+    status: boolean
     id_event: number
     createdAt: Date
     updatedAt: Date
@@ -7217,6 +7236,7 @@ export namespace Prisma {
     quantity?: boolean
     startDate?: boolean
     endDate?: boolean
+    status?: boolean
     id_event?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7232,6 +7252,7 @@ export namespace Prisma {
     quantity?: boolean
     startDate?: boolean
     endDate?: boolean
+    status?: boolean
     id_event?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7245,6 +7266,7 @@ export namespace Prisma {
     quantity?: boolean
     startDate?: boolean
     endDate?: boolean
+    status?: boolean
     id_event?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -7272,6 +7294,7 @@ export namespace Prisma {
       quantity: number
       startDate: Date
       endDate: Date
+      status: boolean
       id_event: number
       createdAt: Date
       updatedAt: Date
@@ -7676,6 +7699,7 @@ export namespace Prisma {
     readonly quantity: FieldRef<"Promotion", 'Int'>
     readonly startDate: FieldRef<"Promotion", 'DateTime'>
     readonly endDate: FieldRef<"Promotion", 'DateTime'>
+    readonly status: FieldRef<"Promotion", 'Boolean'>
     readonly id_event: FieldRef<"Promotion", 'Int'>
     readonly createdAt: FieldRef<"Promotion", 'DateTime'>
     readonly updatedAt: FieldRef<"Promotion", 'DateTime'>
@@ -8324,7 +8348,7 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
     event?: boolean | EventDefaultArgs<ExtArgs>
     promotion?: boolean | Transaction$promotionArgs<ExtArgs>
-    payments?: boolean | Transaction$paymentsArgs<ExtArgs>
+    payment?: boolean | Transaction$paymentArgs<ExtArgs>
     rating?: boolean | Transaction$ratingArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
@@ -8367,7 +8391,7 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
     event?: boolean | EventDefaultArgs<ExtArgs>
     promotion?: boolean | Transaction$promotionArgs<ExtArgs>
-    payments?: boolean | Transaction$paymentsArgs<ExtArgs>
+    payment?: boolean | Transaction$paymentArgs<ExtArgs>
     rating?: boolean | Transaction$ratingArgs<ExtArgs>
   }
   export type TransactionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8382,7 +8406,7 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs>
       event: Prisma.$EventPayload<ExtArgs>
       promotion: Prisma.$PromotionPayload<ExtArgs> | null
-      payments: Prisma.$PaymentPayload<ExtArgs> | null
+      payment: Prisma.$PaymentPayload<ExtArgs> | null
       rating: Prisma.$RatingPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -8766,7 +8790,7 @@ export namespace Prisma {
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     event<T extends EventDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EventDefaultArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     promotion<T extends Transaction$promotionArgs<ExtArgs> = {}>(args?: Subset<T, Transaction$promotionArgs<ExtArgs>>): Prisma__PromotionClient<$Result.GetResult<Prisma.$PromotionPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
-    payments<T extends Transaction$paymentsArgs<ExtArgs> = {}>(args?: Subset<T, Transaction$paymentsArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    payment<T extends Transaction$paymentArgs<ExtArgs> = {}>(args?: Subset<T, Transaction$paymentArgs<ExtArgs>>): Prisma__PaymentClient<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     rating<T extends Transaction$ratingArgs<ExtArgs> = {}>(args?: Subset<T, Transaction$ratingArgs<ExtArgs>>): Prisma__RatingClient<$Result.GetResult<Prisma.$RatingPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9143,9 +9167,9 @@ export namespace Prisma {
   }
 
   /**
-   * Transaction.payments
+   * Transaction.payment
    */
-  export type Transaction$paymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Transaction$paymentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Payment
      */
@@ -11179,6 +11203,7 @@ export namespace Prisma {
     desc: 'desc',
     isPaidEvent: 'isPaidEvent',
     price: 'price',
+    isActive: 'isActive',
     startDate: 'startDate',
     endDate: 'endDate',
     image: 'image',
@@ -11223,6 +11248,7 @@ export namespace Prisma {
     quantity: 'quantity',
     startDate: 'startDate',
     endDate: 'endDate',
+    status: 'status',
     id_event: 'id_event',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -11545,6 +11571,7 @@ export namespace Prisma {
     desc?: StringFilter<"Event"> | string
     isPaidEvent?: BoolFilter<"Event"> | boolean
     price?: IntNullableFilter<"Event"> | number | null
+    isActive?: BoolFilter<"Event"> | boolean
     startDate?: DateTimeNullableFilter<"Event"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Event"> | Date | string | null
     image?: StringFilter<"Event"> | string
@@ -11566,6 +11593,7 @@ export namespace Prisma {
     desc?: SortOrder
     isPaidEvent?: SortOrder
     price?: SortOrderInput | SortOrder
+    isActive?: SortOrder
     startDate?: SortOrderInput | SortOrder
     endDate?: SortOrderInput | SortOrder
     image?: SortOrder
@@ -11590,6 +11618,7 @@ export namespace Prisma {
     desc?: StringFilter<"Event"> | string
     isPaidEvent?: BoolFilter<"Event"> | boolean
     price?: IntNullableFilter<"Event"> | number | null
+    isActive?: BoolFilter<"Event"> | boolean
     startDate?: DateTimeNullableFilter<"Event"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Event"> | Date | string | null
     image?: StringFilter<"Event"> | string
@@ -11611,6 +11640,7 @@ export namespace Prisma {
     desc?: SortOrder
     isPaidEvent?: SortOrder
     price?: SortOrderInput | SortOrder
+    isActive?: SortOrder
     startDate?: SortOrderInput | SortOrder
     endDate?: SortOrderInput | SortOrder
     image?: SortOrder
@@ -11635,6 +11665,7 @@ export namespace Prisma {
     desc?: StringWithAggregatesFilter<"Event"> | string
     isPaidEvent?: BoolWithAggregatesFilter<"Event"> | boolean
     price?: IntNullableWithAggregatesFilter<"Event"> | number | null
+    isActive?: BoolWithAggregatesFilter<"Event"> | boolean
     startDate?: DateTimeNullableWithAggregatesFilter<"Event"> | Date | string | null
     endDate?: DateTimeNullableWithAggregatesFilter<"Event"> | Date | string | null
     image?: StringWithAggregatesFilter<"Event"> | string
@@ -11785,6 +11816,7 @@ export namespace Prisma {
     quantity?: IntFilter<"Promotion"> | number
     startDate?: DateTimeFilter<"Promotion"> | Date | string
     endDate?: DateTimeFilter<"Promotion"> | Date | string
+    status?: BoolFilter<"Promotion"> | boolean
     id_event?: IntFilter<"Promotion"> | number
     createdAt?: DateTimeFilter<"Promotion"> | Date | string
     updatedAt?: DateTimeFilter<"Promotion"> | Date | string
@@ -11799,6 +11831,7 @@ export namespace Prisma {
     quantity?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    status?: SortOrder
     id_event?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -11816,6 +11849,7 @@ export namespace Prisma {
     quantity?: IntFilter<"Promotion"> | number
     startDate?: DateTimeFilter<"Promotion"> | Date | string
     endDate?: DateTimeFilter<"Promotion"> | Date | string
+    status?: BoolFilter<"Promotion"> | boolean
     id_event?: IntFilter<"Promotion"> | number
     createdAt?: DateTimeFilter<"Promotion"> | Date | string
     updatedAt?: DateTimeFilter<"Promotion"> | Date | string
@@ -11830,6 +11864,7 @@ export namespace Prisma {
     quantity?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    status?: SortOrder
     id_event?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -11850,6 +11885,7 @@ export namespace Prisma {
     quantity?: IntWithAggregatesFilter<"Promotion"> | number
     startDate?: DateTimeWithAggregatesFilter<"Promotion"> | Date | string
     endDate?: DateTimeWithAggregatesFilter<"Promotion"> | Date | string
+    status?: BoolWithAggregatesFilter<"Promotion"> | boolean
     id_event?: IntWithAggregatesFilter<"Promotion"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Promotion"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Promotion"> | Date | string
@@ -11875,7 +11911,7 @@ export namespace Prisma {
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     event?: XOR<EventScalarRelationFilter, EventWhereInput>
     promotion?: XOR<PromotionNullableScalarRelationFilter, PromotionWhereInput> | null
-    payments?: XOR<PaymentNullableScalarRelationFilter, PaymentWhereInput> | null
+    payment?: XOR<PaymentNullableScalarRelationFilter, PaymentWhereInput> | null
     rating?: XOR<RatingNullableScalarRelationFilter, RatingWhereInput> | null
   }
 
@@ -11896,7 +11932,7 @@ export namespace Prisma {
     user?: UserOrderByWithRelationInput
     event?: EventOrderByWithRelationInput
     promotion?: PromotionOrderByWithRelationInput
-    payments?: PaymentOrderByWithRelationInput
+    payment?: PaymentOrderByWithRelationInput
     rating?: RatingOrderByWithRelationInput
   }
 
@@ -11920,7 +11956,7 @@ export namespace Prisma {
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     event?: XOR<EventScalarRelationFilter, EventWhereInput>
     promotion?: XOR<PromotionNullableScalarRelationFilter, PromotionWhereInput> | null
-    payments?: XOR<PaymentNullableScalarRelationFilter, PaymentWhereInput> | null
+    payment?: XOR<PaymentNullableScalarRelationFilter, PaymentWhereInput> | null
     rating?: XOR<RatingNullableScalarRelationFilter, RatingWhereInput> | null
   }, "id">
 
@@ -12252,6 +12288,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price?: number | null
+    isActive?: boolean
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
@@ -12271,6 +12308,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price?: number | null
+    isActive?: boolean
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
@@ -12289,6 +12327,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -12308,6 +12347,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -12327,6 +12367,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price?: number | null
+    isActive?: boolean
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
@@ -12342,6 +12383,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -12356,6 +12398,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -12474,10 +12517,11 @@ export namespace Prisma {
 
   export type PromotionCreateInput = {
     name: string
-    discountAmount: number
-    quantity: number
+    discountAmount?: number
+    quantity?: number
     startDate?: Date | string
-    endDate: Date | string
+    endDate?: Date | string
+    status?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     event: EventCreateNestedOneWithoutPromotionsInput
@@ -12487,10 +12531,11 @@ export namespace Prisma {
   export type PromotionUncheckedCreateInput = {
     id?: number
     name: string
-    discountAmount: number
-    quantity: number
+    discountAmount?: number
+    quantity?: number
     startDate?: Date | string
-    endDate: Date | string
+    endDate?: Date | string
+    status?: boolean
     id_event: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -12503,6 +12548,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     event?: EventUpdateOneRequiredWithoutPromotionsNestedInput
@@ -12516,6 +12562,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     id_event?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12525,10 +12572,11 @@ export namespace Prisma {
   export type PromotionCreateManyInput = {
     id?: number
     name: string
-    discountAmount: number
-    quantity: number
+    discountAmount?: number
+    quantity?: number
     startDate?: Date | string
-    endDate: Date | string
+    endDate?: Date | string
+    status?: boolean
     id_event: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -12540,6 +12588,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12551,6 +12600,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     id_event?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12569,7 +12619,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutTransactionsInput
     event: EventCreateNestedOneWithoutTransactionsInput
     promotion?: PromotionCreateNestedOneWithoutTransactionsInput
-    payments?: PaymentCreateNestedOneWithoutTransactionInput
+    payment?: PaymentCreateNestedOneWithoutTransactionInput
     rating?: RatingCreateNestedOneWithoutTransactionInput
   }
 
@@ -12587,7 +12637,7 @@ export namespace Prisma {
     createdAt?: Date | string
     expiredAt?: Date | string
     updatedAt?: Date | string
-    payments?: PaymentUncheckedCreateNestedOneWithoutTransactionInput
+    payment?: PaymentUncheckedCreateNestedOneWithoutTransactionInput
     rating?: RatingUncheckedCreateNestedOneWithoutTransactionInput
   }
 
@@ -12604,7 +12654,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
     event?: EventUpdateOneRequiredWithoutTransactionsNestedInput
     promotion?: PromotionUpdateOneWithoutTransactionsNestedInput
-    payments?: PaymentUpdateOneWithoutTransactionNestedInput
+    payment?: PaymentUpdateOneWithoutTransactionNestedInput
     rating?: RatingUpdateOneWithoutTransactionNestedInput
   }
 
@@ -12622,7 +12672,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    payments?: PaymentUncheckedUpdateOneWithoutTransactionNestedInput
+    payment?: PaymentUncheckedUpdateOneWithoutTransactionNestedInput
     rating?: RatingUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
@@ -12671,7 +12721,7 @@ export namespace Prisma {
   }
 
   export type RatingCreateInput = {
-    rating: number
+    rating?: number
     review?: string | null
     image?: string | null
     transaction: TransactionCreateNestedOneWithoutRatingInput
@@ -12679,7 +12729,7 @@ export namespace Prisma {
 
   export type RatingUncheckedCreateInput = {
     id?: number
-    rating: number
+    rating?: number
     review?: string | null
     image?: string | null
     id_transaction: number
@@ -12702,7 +12752,7 @@ export namespace Prisma {
 
   export type RatingCreateManyInput = {
     id?: number
-    rating: number
+    rating?: number
     review?: string | null
     image?: string | null
     id_transaction: number
@@ -12726,7 +12776,7 @@ export namespace Prisma {
     status?: boolean
     createdAt?: Date | string
     completedAt?: Date | string | null
-    transaction: TransactionCreateNestedOneWithoutPaymentsInput
+    transaction: TransactionCreateNestedOneWithoutPaymentInput
   }
 
   export type PaymentUncheckedCreateInput = {
@@ -12741,7 +12791,7 @@ export namespace Prisma {
     status?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    transaction?: TransactionUpdateOneRequiredWithoutPaymentsNestedInput
+    transaction?: TransactionUpdateOneRequiredWithoutPaymentNestedInput
   }
 
   export type PaymentUncheckedUpdateInput = {
@@ -13105,6 +13155,7 @@ export namespace Prisma {
     desc?: SortOrder
     isPaidEvent?: SortOrder
     price?: SortOrder
+    isActive?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     image?: SortOrder
@@ -13129,6 +13180,7 @@ export namespace Prisma {
     desc?: SortOrder
     isPaidEvent?: SortOrder
     price?: SortOrder
+    isActive?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     image?: SortOrder
@@ -13145,6 +13197,7 @@ export namespace Prisma {
     desc?: SortOrder
     isPaidEvent?: SortOrder
     price?: SortOrder
+    isActive?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     image?: SortOrder
@@ -13286,6 +13339,7 @@ export namespace Prisma {
     quantity?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    status?: SortOrder
     id_event?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -13305,6 +13359,7 @@ export namespace Prisma {
     quantity?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    status?: SortOrder
     id_event?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -13317,6 +13372,7 @@ export namespace Prisma {
     quantity?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    status?: SortOrder
     id_event?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -14145,18 +14201,18 @@ export namespace Prisma {
     update?: XOR<XOR<TransactionUpdateToOneWithWhereWithoutRatingInput, TransactionUpdateWithoutRatingInput>, TransactionUncheckedUpdateWithoutRatingInput>
   }
 
-  export type TransactionCreateNestedOneWithoutPaymentsInput = {
-    create?: XOR<TransactionCreateWithoutPaymentsInput, TransactionUncheckedCreateWithoutPaymentsInput>
-    connectOrCreate?: TransactionCreateOrConnectWithoutPaymentsInput
+  export type TransactionCreateNestedOneWithoutPaymentInput = {
+    create?: XOR<TransactionCreateWithoutPaymentInput, TransactionUncheckedCreateWithoutPaymentInput>
+    connectOrCreate?: TransactionCreateOrConnectWithoutPaymentInput
     connect?: TransactionWhereUniqueInput
   }
 
-  export type TransactionUpdateOneRequiredWithoutPaymentsNestedInput = {
-    create?: XOR<TransactionCreateWithoutPaymentsInput, TransactionUncheckedCreateWithoutPaymentsInput>
-    connectOrCreate?: TransactionCreateOrConnectWithoutPaymentsInput
-    upsert?: TransactionUpsertWithoutPaymentsInput
+  export type TransactionUpdateOneRequiredWithoutPaymentNestedInput = {
+    create?: XOR<TransactionCreateWithoutPaymentInput, TransactionUncheckedCreateWithoutPaymentInput>
+    connectOrCreate?: TransactionCreateOrConnectWithoutPaymentInput
+    upsert?: TransactionUpsertWithoutPaymentInput
     connect?: TransactionWhereUniqueInput
-    update?: XOR<XOR<TransactionUpdateToOneWithWhereWithoutPaymentsInput, TransactionUpdateWithoutPaymentsInput>, TransactionUncheckedUpdateWithoutPaymentsInput>
+    update?: XOR<XOR<TransactionUpdateToOneWithWhereWithoutPaymentInput, TransactionUpdateWithoutPaymentInput>, TransactionUncheckedUpdateWithoutPaymentInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -14512,6 +14568,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price?: number | null
+    isActive?: boolean
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
@@ -14530,6 +14587,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price?: number | null
+    isActive?: boolean
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
@@ -14564,7 +14622,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     event: EventCreateNestedOneWithoutTransactionsInput
     promotion?: PromotionCreateNestedOneWithoutTransactionsInput
-    payments?: PaymentCreateNestedOneWithoutTransactionInput
+    payment?: PaymentCreateNestedOneWithoutTransactionInput
     rating?: RatingCreateNestedOneWithoutTransactionInput
   }
 
@@ -14581,7 +14639,7 @@ export namespace Prisma {
     createdAt?: Date | string
     expiredAt?: Date | string
     updatedAt?: Date | string
-    payments?: PaymentUncheckedCreateNestedOneWithoutTransactionInput
+    payment?: PaymentUncheckedCreateNestedOneWithoutTransactionInput
     rating?: RatingUncheckedCreateNestedOneWithoutTransactionInput
   }
 
@@ -14722,6 +14780,7 @@ export namespace Prisma {
     desc?: StringFilter<"Event"> | string
     isPaidEvent?: BoolFilter<"Event"> | boolean
     price?: IntNullableFilter<"Event"> | number | null
+    isActive?: BoolFilter<"Event"> | boolean
     startDate?: DateTimeNullableFilter<"Event"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Event"> | Date | string | null
     image?: StringFilter<"Event"> | string
@@ -14855,10 +14914,11 @@ export namespace Prisma {
 
   export type PromotionCreateWithoutEventInput = {
     name: string
-    discountAmount: number
-    quantity: number
+    discountAmount?: number
+    quantity?: number
     startDate?: Date | string
-    endDate: Date | string
+    endDate?: Date | string
+    status?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     transactions?: TransactionCreateNestedManyWithoutPromotionInput
@@ -14867,10 +14927,11 @@ export namespace Prisma {
   export type PromotionUncheckedCreateWithoutEventInput = {
     id?: number
     name: string
-    discountAmount: number
-    quantity: number
+    discountAmount?: number
+    quantity?: number
     startDate?: Date | string
-    endDate: Date | string
+    endDate?: Date | string
+    status?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     transactions?: TransactionUncheckedCreateNestedManyWithoutPromotionInput
@@ -14898,7 +14959,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutTransactionsInput
     promotion?: PromotionCreateNestedOneWithoutTransactionsInput
-    payments?: PaymentCreateNestedOneWithoutTransactionInput
+    payment?: PaymentCreateNestedOneWithoutTransactionInput
     rating?: RatingCreateNestedOneWithoutTransactionInput
   }
 
@@ -14915,7 +14976,7 @@ export namespace Prisma {
     createdAt?: Date | string
     expiredAt?: Date | string
     updatedAt?: Date | string
-    payments?: PaymentUncheckedCreateNestedOneWithoutTransactionInput
+    payment?: PaymentUncheckedCreateNestedOneWithoutTransactionInput
     rating?: RatingUncheckedCreateNestedOneWithoutTransactionInput
   }
 
@@ -15059,6 +15120,7 @@ export namespace Prisma {
     quantity?: IntFilter<"Promotion"> | number
     startDate?: DateTimeFilter<"Promotion"> | Date | string
     endDate?: DateTimeFilter<"Promotion"> | Date | string
+    status?: BoolFilter<"Promotion"> | boolean
     id_event?: IntFilter<"Promotion"> | number
     createdAt?: DateTimeFilter<"Promotion"> | Date | string
     updatedAt?: DateTimeFilter<"Promotion"> | Date | string
@@ -15119,6 +15181,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price?: number | null
+    isActive?: boolean
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
@@ -15137,6 +15200,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price?: number | null
+    isActive?: boolean
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
@@ -15184,6 +15248,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -15202,6 +15267,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -15239,6 +15305,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price?: number | null
+    isActive?: boolean
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
@@ -15257,6 +15324,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price?: number | null
+    isActive?: boolean
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
@@ -15300,6 +15368,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price?: number | null
+    isActive?: boolean
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
@@ -15318,6 +15387,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price?: number | null
+    isActive?: boolean
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
@@ -15347,7 +15417,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutTransactionsInput
     event: EventCreateNestedOneWithoutTransactionsInput
-    payments?: PaymentCreateNestedOneWithoutTransactionInput
+    payment?: PaymentCreateNestedOneWithoutTransactionInput
     rating?: RatingCreateNestedOneWithoutTransactionInput
   }
 
@@ -15364,7 +15434,7 @@ export namespace Prisma {
     createdAt?: Date | string
     expiredAt?: Date | string
     updatedAt?: Date | string
-    payments?: PaymentUncheckedCreateNestedOneWithoutTransactionInput
+    payment?: PaymentUncheckedCreateNestedOneWithoutTransactionInput
     rating?: RatingUncheckedCreateNestedOneWithoutTransactionInput
   }
 
@@ -15394,6 +15464,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -15412,6 +15483,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -15499,6 +15571,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price?: number | null
+    isActive?: boolean
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
@@ -15517,6 +15590,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price?: number | null
+    isActive?: boolean
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
@@ -15536,10 +15610,11 @@ export namespace Prisma {
 
   export type PromotionCreateWithoutTransactionsInput = {
     name: string
-    discountAmount: number
-    quantity: number
+    discountAmount?: number
+    quantity?: number
     startDate?: Date | string
-    endDate: Date | string
+    endDate?: Date | string
+    status?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     event: EventCreateNestedOneWithoutPromotionsInput
@@ -15548,10 +15623,11 @@ export namespace Prisma {
   export type PromotionUncheckedCreateWithoutTransactionsInput = {
     id?: number
     name: string
-    discountAmount: number
-    quantity: number
+    discountAmount?: number
+    quantity?: number
     startDate?: Date | string
-    endDate: Date | string
+    endDate?: Date | string
+    status?: boolean
     id_event: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -15581,14 +15657,14 @@ export namespace Prisma {
   }
 
   export type RatingCreateWithoutTransactionInput = {
-    rating: number
+    rating?: number
     review?: string | null
     image?: string | null
   }
 
   export type RatingUncheckedCreateWithoutTransactionInput = {
     id?: number
-    rating: number
+    rating?: number
     review?: string | null
     image?: string | null
   }
@@ -15674,6 +15750,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -15692,6 +15769,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -15721,6 +15799,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     event?: EventUpdateOneRequiredWithoutPromotionsNestedInput
@@ -15733,6 +15812,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     id_event?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15799,7 +15879,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutTransactionsInput
     event: EventCreateNestedOneWithoutTransactionsInput
     promotion?: PromotionCreateNestedOneWithoutTransactionsInput
-    payments?: PaymentCreateNestedOneWithoutTransactionInput
+    payment?: PaymentCreateNestedOneWithoutTransactionInput
   }
 
   export type TransactionUncheckedCreateWithoutRatingInput = {
@@ -15816,7 +15896,7 @@ export namespace Prisma {
     createdAt?: Date | string
     expiredAt?: Date | string
     updatedAt?: Date | string
-    payments?: PaymentUncheckedCreateNestedOneWithoutTransactionInput
+    payment?: PaymentUncheckedCreateNestedOneWithoutTransactionInput
   }
 
   export type TransactionCreateOrConnectWithoutRatingInput = {
@@ -15848,7 +15928,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
     event?: EventUpdateOneRequiredWithoutTransactionsNestedInput
     promotion?: PromotionUpdateOneWithoutTransactionsNestedInput
-    payments?: PaymentUpdateOneWithoutTransactionNestedInput
+    payment?: PaymentUpdateOneWithoutTransactionNestedInput
   }
 
   export type TransactionUncheckedUpdateWithoutRatingInput = {
@@ -15865,10 +15945,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    payments?: PaymentUncheckedUpdateOneWithoutTransactionNestedInput
+    payment?: PaymentUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
-  export type TransactionCreateWithoutPaymentsInput = {
+  export type TransactionCreateWithoutPaymentInput = {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
@@ -15884,7 +15964,7 @@ export namespace Prisma {
     rating?: RatingCreateNestedOneWithoutTransactionInput
   }
 
-  export type TransactionUncheckedCreateWithoutPaymentsInput = {
+  export type TransactionUncheckedCreateWithoutPaymentInput = {
     id?: number
     quantity?: number
     subtotal: number
@@ -15901,23 +15981,23 @@ export namespace Prisma {
     rating?: RatingUncheckedCreateNestedOneWithoutTransactionInput
   }
 
-  export type TransactionCreateOrConnectWithoutPaymentsInput = {
+  export type TransactionCreateOrConnectWithoutPaymentInput = {
     where: TransactionWhereUniqueInput
-    create: XOR<TransactionCreateWithoutPaymentsInput, TransactionUncheckedCreateWithoutPaymentsInput>
+    create: XOR<TransactionCreateWithoutPaymentInput, TransactionUncheckedCreateWithoutPaymentInput>
   }
 
-  export type TransactionUpsertWithoutPaymentsInput = {
-    update: XOR<TransactionUpdateWithoutPaymentsInput, TransactionUncheckedUpdateWithoutPaymentsInput>
-    create: XOR<TransactionCreateWithoutPaymentsInput, TransactionUncheckedCreateWithoutPaymentsInput>
+  export type TransactionUpsertWithoutPaymentInput = {
+    update: XOR<TransactionUpdateWithoutPaymentInput, TransactionUncheckedUpdateWithoutPaymentInput>
+    create: XOR<TransactionCreateWithoutPaymentInput, TransactionUncheckedCreateWithoutPaymentInput>
     where?: TransactionWhereInput
   }
 
-  export type TransactionUpdateToOneWithWhereWithoutPaymentsInput = {
+  export type TransactionUpdateToOneWithWhereWithoutPaymentInput = {
     where?: TransactionWhereInput
-    data: XOR<TransactionUpdateWithoutPaymentsInput, TransactionUncheckedUpdateWithoutPaymentsInput>
+    data: XOR<TransactionUpdateWithoutPaymentInput, TransactionUncheckedUpdateWithoutPaymentInput>
   }
 
-  export type TransactionUpdateWithoutPaymentsInput = {
+  export type TransactionUpdateWithoutPaymentInput = {
     quantity?: IntFieldUpdateOperationsInput | number
     subtotal?: IntFieldUpdateOperationsInput | number
     referralCouponIsUsed?: BoolFieldUpdateOperationsInput | boolean
@@ -15933,7 +16013,7 @@ export namespace Prisma {
     rating?: RatingUpdateOneWithoutTransactionNestedInput
   }
 
-  export type TransactionUncheckedUpdateWithoutPaymentsInput = {
+  export type TransactionUncheckedUpdateWithoutPaymentInput = {
     id?: IntFieldUpdateOperationsInput | number
     quantity?: IntFieldUpdateOperationsInput | number
     subtotal?: IntFieldUpdateOperationsInput | number
@@ -15978,6 +16058,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price?: number | null
+    isActive?: boolean
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
@@ -16078,6 +16159,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -16096,6 +16178,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -16114,6 +16197,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -16135,7 +16219,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     event?: EventUpdateOneRequiredWithoutTransactionsNestedInput
     promotion?: PromotionUpdateOneWithoutTransactionsNestedInput
-    payments?: PaymentUpdateOneWithoutTransactionNestedInput
+    payment?: PaymentUpdateOneWithoutTransactionNestedInput
     rating?: RatingUpdateOneWithoutTransactionNestedInput
   }
 
@@ -16152,7 +16236,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    payments?: PaymentUncheckedUpdateOneWithoutTransactionNestedInput
+    payment?: PaymentUncheckedUpdateOneWithoutTransactionNestedInput
     rating?: RatingUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
@@ -16178,10 +16262,11 @@ export namespace Prisma {
   export type PromotionCreateManyEventInput = {
     id?: number
     name: string
-    discountAmount: number
-    quantity: number
+    discountAmount?: number
+    quantity?: number
     startDate?: Date | string
-    endDate: Date | string
+    endDate?: Date | string
+    status?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -16219,6 +16304,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     transactions?: TransactionUpdateManyWithoutPromotionNestedInput
@@ -16231,6 +16317,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     transactions?: TransactionUncheckedUpdateManyWithoutPromotionNestedInput
@@ -16243,6 +16330,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16259,7 +16347,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
     promotion?: PromotionUpdateOneWithoutTransactionsNestedInput
-    payments?: PaymentUpdateOneWithoutTransactionNestedInput
+    payment?: PaymentUpdateOneWithoutTransactionNestedInput
     rating?: RatingUpdateOneWithoutTransactionNestedInput
   }
 
@@ -16276,7 +16364,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    payments?: PaymentUncheckedUpdateOneWithoutTransactionNestedInput
+    payment?: PaymentUncheckedUpdateOneWithoutTransactionNestedInput
     rating?: RatingUncheckedUpdateOneWithoutTransactionNestedInput
   }
 
@@ -16317,6 +16405,7 @@ export namespace Prisma {
     desc: string
     isPaidEvent: boolean
     price?: number | null
+    isActive?: boolean
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
@@ -16331,6 +16420,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -16349,6 +16439,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -16367,6 +16458,7 @@ export namespace Prisma {
     desc?: StringFieldUpdateOperationsInput | string
     isPaidEvent?: BoolFieldUpdateOperationsInput | boolean
     price?: NullableIntFieldUpdateOperationsInput | number | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
@@ -16403,7 +16495,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutTransactionsNestedInput
     event?: EventUpdateOneRequiredWithoutTransactionsNestedInput
-    payments?: PaymentUpdateOneWithoutTransactionNestedInput
+    payment?: PaymentUpdateOneWithoutTransactionNestedInput
     rating?: RatingUpdateOneWithoutTransactionNestedInput
   }
 
@@ -16420,7 +16512,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    payments?: PaymentUncheckedUpdateOneWithoutTransactionNestedInput
+    payment?: PaymentUncheckedUpdateOneWithoutTransactionNestedInput
     rating?: RatingUncheckedUpdateOneWithoutTransactionNestedInput
   }
 

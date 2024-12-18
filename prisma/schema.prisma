@@ -149,7 +149,7 @@ model Transaction {
   id_promotion Int
   promotion    Promotion? @relation("PromotionTransactions", fields: [id_promotion], references: [id])
 
-  payments Payment? @relation("TransactionPayment")
+  payment Payment? @relation("TransactionPayment")
   rating   Rating?  @relation("TransactionRating")
 
   createdAt DateTime @default(now())

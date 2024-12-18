@@ -35,6 +35,10 @@ export class PromotionRouter {
             "/delete/:id",
             this.promotionController.deletePromotion
         );
+        this.route.patch(
+            "/toggle/:id",
+            this.promotionController.togglePromotion
+        );
     }
 
     public getRouter(): Router {
