@@ -2019,7 +2019,7 @@ export namespace Prisma {
     pointBalance: number
     expiredDates: Date[]
     coupon: boolean
-    couponExpiredAt: Date
+    couponExpiredAt: Date | null
     organizationName: string | null
     organizationEmail: string | null
     organizationPhone: string | null
@@ -2155,7 +2155,7 @@ export namespace Prisma {
       pointBalance: number
       expiredDates: Date[]
       coupon: boolean
-      couponExpiredAt: Date
+      couponExpiredAt: Date | null
       organizationName: string | null
       organizationEmail: string | null
       organizationPhone: string | null
@@ -11438,7 +11438,7 @@ export namespace Prisma {
     pointBalance?: IntFilter<"User"> | number
     expiredDates?: DateTimeNullableListFilter<"User">
     coupon?: BoolFilter<"User"> | boolean
-    couponExpiredAt?: DateTimeFilter<"User"> | Date | string
+    couponExpiredAt?: DateTimeNullableFilter<"User"> | Date | string | null
     organizationName?: StringNullableFilter<"User"> | string | null
     organizationEmail?: StringNullableFilter<"User"> | string | null
     organizationPhone?: StringNullableFilter<"User"> | string | null
@@ -11465,7 +11465,7 @@ export namespace Prisma {
     pointBalance?: SortOrder
     expiredDates?: SortOrder
     coupon?: SortOrder
-    couponExpiredAt?: SortOrder
+    couponExpiredAt?: SortOrderInput | SortOrder
     organizationName?: SortOrderInput | SortOrder
     organizationEmail?: SortOrderInput | SortOrder
     organizationPhone?: SortOrderInput | SortOrder
@@ -11499,7 +11499,7 @@ export namespace Prisma {
     pointBalance?: IntFilter<"User"> | number
     expiredDates?: DateTimeNullableListFilter<"User">
     coupon?: BoolFilter<"User"> | boolean
-    couponExpiredAt?: DateTimeFilter<"User"> | Date | string
+    couponExpiredAt?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     referralCodeUsed?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -11522,7 +11522,7 @@ export namespace Prisma {
     pointBalance?: SortOrder
     expiredDates?: SortOrder
     coupon?: SortOrder
-    couponExpiredAt?: SortOrder
+    couponExpiredAt?: SortOrderInput | SortOrder
     organizationName?: SortOrderInput | SortOrder
     organizationEmail?: SortOrderInput | SortOrder
     organizationPhone?: SortOrderInput | SortOrder
@@ -11553,7 +11553,7 @@ export namespace Prisma {
     pointBalance?: IntWithAggregatesFilter<"User"> | number
     expiredDates?: DateTimeNullableListFilter<"User">
     coupon?: BoolWithAggregatesFilter<"User"> | boolean
-    couponExpiredAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    couponExpiredAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     organizationName?: StringNullableWithAggregatesFilter<"User"> | string | null
     organizationEmail?: StringNullableWithAggregatesFilter<"User"> | string | null
     organizationPhone?: StringNullableWithAggregatesFilter<"User"> | string | null
@@ -12126,7 +12126,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -12153,7 +12153,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -12177,7 +12177,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12204,7 +12204,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12230,7 +12230,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -12251,7 +12251,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12274,7 +12274,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12885,6 +12885,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -13083,6 +13094,20 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -13106,17 +13131,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type UserScalarRelationFilter = {
@@ -13230,20 +13244,6 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type CategoryCountOrderByAggregateInput = {
@@ -13643,6 +13643,10 @@ export namespace Prisma {
     set?: boolean
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -13801,10 +13805,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
   }
 
   export type UserUpdateOneRequiredWithoutEventsNestedInput = {
@@ -14266,6 +14266,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -14367,6 +14378,20 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -14379,17 +14404,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -14417,20 +14431,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumTransactionStatusFilter<$PrismaModel = never> = {
@@ -14462,7 +14462,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -14488,7 +14488,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -14516,7 +14516,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -14541,7 +14541,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -14676,7 +14676,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14702,7 +14702,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14746,7 +14746,7 @@ export namespace Prisma {
     pointBalance?: IntFilter<"User"> | number
     expiredDates?: DateTimeNullableListFilter<"User">
     coupon?: BoolFilter<"User"> | boolean
-    couponExpiredAt?: DateTimeFilter<"User"> | Date | string
+    couponExpiredAt?: DateTimeNullableFilter<"User"> | Date | string | null
     organizationName?: StringNullableFilter<"User"> | string | null
     organizationEmail?: StringNullableFilter<"User"> | string | null
     organizationPhone?: StringNullableFilter<"User"> | string | null
@@ -14838,7 +14838,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -14864,7 +14864,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -15013,7 +15013,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15039,7 +15039,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15524,7 +15524,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -15550,7 +15550,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -15697,7 +15697,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15723,7 +15723,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16043,7 +16043,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -16095,7 +16095,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16120,7 +16120,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16145,7 +16145,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null

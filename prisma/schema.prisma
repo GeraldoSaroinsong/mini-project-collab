@@ -29,7 +29,7 @@ model User {
   pointBalance    Int        @default(0)
   expiredDates    DateTime[]
   coupon          Boolean    @default(false)
-  couponExpiredAt DateTime   @default(now())
+  couponExpiredAt DateTime?   
 
   // Atribut Organizer
   organizationName    String? @unique

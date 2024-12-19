@@ -6,14 +6,7 @@ import { sign } from "jsonwebtoken";
 import userDal from "../dal/user.dal";
 import { tokenGenerator } from "../utils/tokenGenerator";
 
-// CONTOH IMPORT LAIN
-// import { hashPassword } from "../utils/hashPassword";
-// import { compareSync } from "bcrypt";
-// import { sign } from "jsonwebtoken";
-
 export class UserController {
-    // ? YOUR METHODS HERE
-
     async registerUser(
         req: Request,
         res: Response,
@@ -21,12 +14,12 @@ export class UserController {
     ): Promise<any> {
         try {
             // ? YOUR CODE HERE
-            const result = await userService.serviceUserRegsiter(req.body);
+            const data = await userService.serviceUserRegsiter(req.body);
             return responseHandler.succes(
                 res,
                 "SUCCESSFULLY CREATED NEW USER",
                 201,
-                { result }
+                { data }
             );
         } catch (error: any) {
             // console.log(error);
@@ -41,12 +34,12 @@ export class UserController {
     ): Promise<any> {
         try {
             // ? YOUR CODE HERE
-            const result = await userService.serviceUserLogin(req.body);
+            const data = await userService.serviceUserLogin(req.body);
             return responseHandler.succes(
                 res,
                 "THIS CONTROLLER IS WORKING",
                 201,
-                { result }
+                { data }
             );
         } catch (error: any) {
             // console.log(error);
@@ -60,16 +53,13 @@ export class UserController {
         next: NextFunction
     ): Promise<any> {
         try {
-            // ? YOUR CODE HERE
-            const result = await userService.serviceUserUpdate(
-                parseInt(req.params.id),
-                req.body
-            );
+            const id = parseInt(res.locals.decrypt.id);
+            const data = await userService.serviceUserUpdate(id, req.body);
             return responseHandler.succes(
                 res,
                 "THIS CONTROLLER IS WORKING",
                 201,
-                { result }
+                { data }
             );
         } catch (error: any) {
             // console.log(error);
@@ -84,14 +74,14 @@ export class UserController {
     ): Promise<any> {
         try {
             // ? YOUR CODE HERE
-            const result = await userService.serviceUserDelete(
+            const data = await userService.serviceUserDelete(
                 parseInt(req.params.id)
             );
             return responseHandler.succes(
                 res,
                 "THIS CONTROLLER IS WORKING",
                 201,
-                { result }
+                { data }
             );
         } catch (error: any) {
             // console.log(error);
@@ -136,12 +126,14 @@ export class UserController {
     ): Promise<any> {
         try {
             // ? YOUR CODE HERE
-            const result = await userService.serviceUserLogin(req.body);
+            const data = await userDal.dalUserId({
+                id: parseInt(req.params.id),
+            });
             return responseHandler.succes(
                 res,
                 "THIS CONTROLLER IS WORKING",
                 201,
-                { result }
+                { data }
             );
         } catch (error: any) {
             // console.log(error);
