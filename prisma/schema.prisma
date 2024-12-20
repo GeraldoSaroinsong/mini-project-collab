@@ -71,7 +71,6 @@ model Event {
   id_city Int
   city    City @relation("EventCity", fields: [id_city], references: [id])
 
-  id_category Int
   categories  CategoriesOnEvents[] @relation("EventCategories")
 
   promotions   Promotion[]   @relation("EventPromotions")
@@ -138,7 +137,7 @@ model Transaction {
   quantity             Int               @default(1)
   subtotal             Int
   referralCouponIsUsed Boolean           @default(false)
-  pointsUsed           Int
+  pointsUsed           Int @default(0)
   total                Int
   status               TransactionStatus @default(process)
 
@@ -146,7 +145,7 @@ model Transaction {
   user         User       @relation("UserTransactions", fields: [id_user], references: [id])
   id_event     Int
   event        Event      @relation("EventTransactions", fields: [id_event], references: [id])
-  id_promotion Int
+  id_promotion Int?
   promotion    Promotion? @relation("PromotionTransactions", fields: [id_promotion], references: [id])
 
   payment Payment? @relation("TransactionPayment")

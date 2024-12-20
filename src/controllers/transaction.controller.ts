@@ -9,7 +9,9 @@ export class TransactionController {
         next: NextFunction
     ): Promise<any> {
         try {
-            const newTransaction = await prisma.transaction.create(req.body);
+            const newTransaction = await prisma.transaction.create({
+                data: {...req.body},
+            });
             return responseHandler.succes(
                 res,
                 `SUCCESSFULLY CREATED NEW TRANSACTION`,

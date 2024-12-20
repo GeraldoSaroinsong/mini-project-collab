@@ -9,7 +9,9 @@ export class PromotionController {
         next: NextFunction
     ): Promise<any> {
         try {
-            const newPromotion = await prisma.promotion.create(req.body);
+            const newPromotion = await prisma.promotion.create({
+                data: req.body,
+            });
 
             return responseHandler.succes(
                 res,
@@ -47,7 +49,7 @@ export class PromotionController {
         next: NextFunction
     ): Promise<any> {
         try {
-            const { id_event } = req.body;
+            const id_event = parseInt(req.params.id);
             const eventPromotion = await prisma.promotion.findMany({
                 where: { id_event },
             });

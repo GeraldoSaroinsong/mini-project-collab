@@ -152,7 +152,6 @@ exports.Prisma.EventScalarFieldEnum = {
   image: 'image',
   id_organizer: 'id_organizer',
   id_city: 'id_city',
-  id_category: 'id_category',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
