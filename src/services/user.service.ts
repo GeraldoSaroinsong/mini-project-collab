@@ -1,13 +1,9 @@
-// ? IMPORT DAL's HERE. CONTOH
-import { sign, TokenExpiredError } from "jsonwebtoken";
 import DalUser from "../dal/user.dal";
 import { ILogin, IUser, IUserUpdate } from "../interfaces/user.interface";
 import { hashPassword } from "../utils/hashPassword";
 import { referralGenerator } from "../utils/referralGenerator";
 import { compareSync } from "bcrypt";
 import { tokenGenerator } from "../utils/tokenGenerator";
-
-// ? INTERFACE IF NEEDED
 
 class ServiceUser {
     // ? YOUR METHODS HERE
@@ -31,12 +27,23 @@ class ServiceUser {
             const hashedPassword = await hashPassword(dataUser.password);
             const newRefferalCode = referralGenerator(dataUser.username);
 
-            // ? PEMANGGILAN DAL HERE
-            const newUser = await DalUser.dalUserRegister({
-                ...dataUser,
-                password: hashedPassword,
-                referralCode: newRefferalCode,
-            });
+            let newUser;
+            // ? refcode
+            if (dataUser.usingReferralCode) {
+                // ? PEMANGGILAN DAL HERE
+                newUser = await DalUser.dalUserRegisterRefCode({
+                    ...dataUser,
+                    password: hashedPassword,
+                    referralCode: newRefferalCode,
+                });
+            } else {
+                // ? PEMANGGILAN DAL HERE
+                newUser = await DalUser.dalUserRegister({
+                    ...dataUser,
+                    password: hashedPassword,
+                    referralCode: newRefferalCode,
+                });
+            }
 
             const token = tokenGenerator(newUser);
 
@@ -86,13 +93,6 @@ class ServiceUser {
 
     async serviceUserUpdate(id: number, dataUser: IUserUpdate): Promise<any> {
         try {
-            // ? YOUR BUSINESS CODE HERE
-            if (true) {
-                console.log("INI ADALAH PERKONDISIAN DI DALAM SERVICE");
-            } else {
-                throw { rc: 400, message: "Error di perkondisian service" };
-            }
-
             // ? PEMANGGILAN DAL HERE
             const updatedUser = await DalUser.dalUserUpdate(id, dataUser);
 
@@ -104,13 +104,6 @@ class ServiceUser {
 
     async serviceUserDelete(id: number): Promise<any> {
         try {
-            // ? YOUR BUSINESS CODE HERE
-            if (true) {
-                console.log("INI ADALAH PERKONDISIAN DI DALAM SERVICE");
-            } else {
-                throw { rc: 400, message: "Error di perkondisian service" };
-            }
-
             // ? PEMANGGILAN DAL HERE
             const deletedUser = await DalUser.dalUserDelete(id);
 

@@ -9,7 +9,10 @@ export class RatingController {
         next: NextFunction
     ): Promise<any> {
         try {
-            const newRating = await prisma.rating.create(req.body);
+            const id_user = res.locals.decrypt.id;
+            const newRating = await prisma.rating.create({
+                data: { ...req.body, id_user },
+            });
 
             return responseHandler.succes(
                 res,
@@ -47,9 +50,9 @@ export class RatingController {
         next: NextFunction
     ): Promise<any> {
         try {
-            const id_event = req.params.id;
+            const id_event = parseInt(req.params.id);
             const eventRatings = await prisma.event.findUnique({
-                where: { id: parseInt(req.params.id) },
+                where: { id: id_event },
                 select: { transactions: { select: { rating: true } } },
             });
 
@@ -107,5 +110,4 @@ export class RatingController {
             return responseHandler.error(res, error.message, 500, error);
         }
     }
-
 }

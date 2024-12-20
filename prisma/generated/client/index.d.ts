@@ -2019,7 +2019,7 @@ export namespace Prisma {
     pointBalance: number
     expiredDates: Date[]
     coupon: boolean
-    couponExpiredAt: Date
+    couponExpiredAt: Date | null
     organizationName: string | null
     organizationEmail: string | null
     organizationPhone: string | null
@@ -2155,7 +2155,7 @@ export namespace Prisma {
       pointBalance: number
       expiredDates: Date[]
       coupon: boolean
-      couponExpiredAt: Date
+      couponExpiredAt: Date | null
       organizationName: string | null
       organizationEmail: string | null
       organizationPhone: string | null
@@ -3003,7 +3003,6 @@ export namespace Prisma {
     price: number | null
     id_organizer: number | null
     id_city: number | null
-    id_category: number | null
   }
 
   export type EventSumAggregateOutputType = {
@@ -3011,7 +3010,6 @@ export namespace Prisma {
     price: number | null
     id_organizer: number | null
     id_city: number | null
-    id_category: number | null
   }
 
   export type EventMinAggregateOutputType = {
@@ -3026,7 +3024,6 @@ export namespace Prisma {
     image: string | null
     id_organizer: number | null
     id_city: number | null
-    id_category: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3043,7 +3040,6 @@ export namespace Prisma {
     image: string | null
     id_organizer: number | null
     id_city: number | null
-    id_category: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3060,7 +3056,6 @@ export namespace Prisma {
     image: number
     id_organizer: number
     id_city: number
-    id_category: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3072,7 +3067,6 @@ export namespace Prisma {
     price?: true
     id_organizer?: true
     id_city?: true
-    id_category?: true
   }
 
   export type EventSumAggregateInputType = {
@@ -3080,7 +3074,6 @@ export namespace Prisma {
     price?: true
     id_organizer?: true
     id_city?: true
-    id_category?: true
   }
 
   export type EventMinAggregateInputType = {
@@ -3095,7 +3088,6 @@ export namespace Prisma {
     image?: true
     id_organizer?: true
     id_city?: true
-    id_category?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3112,7 +3104,6 @@ export namespace Prisma {
     image?: true
     id_organizer?: true
     id_city?: true
-    id_category?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3129,7 +3120,6 @@ export namespace Prisma {
     image?: true
     id_organizer?: true
     id_city?: true
-    id_category?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3233,7 +3223,6 @@ export namespace Prisma {
     image: string
     id_organizer: number
     id_city: number
-    id_category: number
     createdAt: Date
     updatedAt: Date
     _count: EventCountAggregateOutputType | null
@@ -3269,7 +3258,6 @@ export namespace Prisma {
     image?: boolean
     id_organizer?: boolean
     id_city?: boolean
-    id_category?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     organizer?: boolean | UserDefaultArgs<ExtArgs>
@@ -3292,7 +3280,6 @@ export namespace Prisma {
     image?: boolean
     id_organizer?: boolean
     id_city?: boolean
-    id_category?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     organizer?: boolean | UserDefaultArgs<ExtArgs>
@@ -3311,7 +3298,6 @@ export namespace Prisma {
     image?: boolean
     id_organizer?: boolean
     id_city?: boolean
-    id_category?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -3350,7 +3336,6 @@ export namespace Prisma {
       image: string
       id_organizer: number
       id_city: number
-      id_category: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["event"]>
@@ -3762,7 +3747,6 @@ export namespace Prisma {
     readonly image: FieldRef<"Event", 'String'>
     readonly id_organizer: FieldRef<"Event", 'Int'>
     readonly id_city: FieldRef<"Event", 'Int'>
-    readonly id_category: FieldRef<"Event", 'Int'>
     readonly createdAt: FieldRef<"Event", 'DateTime'>
     readonly updatedAt: FieldRef<"Event", 'DateTime'>
   }
@@ -8306,7 +8290,7 @@ export namespace Prisma {
     status: $Enums.TransactionStatus
     id_user: number
     id_event: number
-    id_promotion: number
+    id_promotion: number | null
     createdAt: Date
     expiredAt: Date
     updatedAt: Date
@@ -8419,7 +8403,7 @@ export namespace Prisma {
       status: $Enums.TransactionStatus
       id_user: number
       id_event: number
-      id_promotion: number
+      id_promotion: number | null
       createdAt: Date
       expiredAt: Date
       updatedAt: Date
@@ -11209,7 +11193,6 @@ export namespace Prisma {
     image: 'image',
     id_organizer: 'id_organizer',
     id_city: 'id_city',
-    id_category: 'id_category',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -11438,7 +11421,7 @@ export namespace Prisma {
     pointBalance?: IntFilter<"User"> | number
     expiredDates?: DateTimeNullableListFilter<"User">
     coupon?: BoolFilter<"User"> | boolean
-    couponExpiredAt?: DateTimeFilter<"User"> | Date | string
+    couponExpiredAt?: DateTimeNullableFilter<"User"> | Date | string | null
     organizationName?: StringNullableFilter<"User"> | string | null
     organizationEmail?: StringNullableFilter<"User"> | string | null
     organizationPhone?: StringNullableFilter<"User"> | string | null
@@ -11465,7 +11448,7 @@ export namespace Prisma {
     pointBalance?: SortOrder
     expiredDates?: SortOrder
     coupon?: SortOrder
-    couponExpiredAt?: SortOrder
+    couponExpiredAt?: SortOrderInput | SortOrder
     organizationName?: SortOrderInput | SortOrder
     organizationEmail?: SortOrderInput | SortOrder
     organizationPhone?: SortOrderInput | SortOrder
@@ -11499,7 +11482,7 @@ export namespace Prisma {
     pointBalance?: IntFilter<"User"> | number
     expiredDates?: DateTimeNullableListFilter<"User">
     coupon?: BoolFilter<"User"> | boolean
-    couponExpiredAt?: DateTimeFilter<"User"> | Date | string
+    couponExpiredAt?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     referralCodeUsed?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
@@ -11522,7 +11505,7 @@ export namespace Prisma {
     pointBalance?: SortOrder
     expiredDates?: SortOrder
     coupon?: SortOrder
-    couponExpiredAt?: SortOrder
+    couponExpiredAt?: SortOrderInput | SortOrder
     organizationName?: SortOrderInput | SortOrder
     organizationEmail?: SortOrderInput | SortOrder
     organizationPhone?: SortOrderInput | SortOrder
@@ -11553,7 +11536,7 @@ export namespace Prisma {
     pointBalance?: IntWithAggregatesFilter<"User"> | number
     expiredDates?: DateTimeNullableListFilter<"User">
     coupon?: BoolWithAggregatesFilter<"User"> | boolean
-    couponExpiredAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    couponExpiredAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     organizationName?: StringNullableWithAggregatesFilter<"User"> | string | null
     organizationEmail?: StringNullableWithAggregatesFilter<"User"> | string | null
     organizationPhone?: StringNullableWithAggregatesFilter<"User"> | string | null
@@ -11577,7 +11560,6 @@ export namespace Prisma {
     image?: StringFilter<"Event"> | string
     id_organizer?: IntFilter<"Event"> | number
     id_city?: IntFilter<"Event"> | number
-    id_category?: IntFilter<"Event"> | number
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
     organizer?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -11599,7 +11581,6 @@ export namespace Prisma {
     image?: SortOrder
     id_organizer?: SortOrder
     id_city?: SortOrder
-    id_category?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     organizer?: UserOrderByWithRelationInput
@@ -11624,7 +11605,6 @@ export namespace Prisma {
     image?: StringFilter<"Event"> | string
     id_organizer?: IntFilter<"Event"> | number
     id_city?: IntFilter<"Event"> | number
-    id_category?: IntFilter<"Event"> | number
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
     organizer?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -11646,7 +11626,6 @@ export namespace Prisma {
     image?: SortOrder
     id_organizer?: SortOrder
     id_city?: SortOrder
-    id_category?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: EventCountOrderByAggregateInput
@@ -11671,7 +11650,6 @@ export namespace Prisma {
     image?: StringWithAggregatesFilter<"Event"> | string
     id_organizer?: IntWithAggregatesFilter<"Event"> | number
     id_city?: IntWithAggregatesFilter<"Event"> | number
-    id_category?: IntWithAggregatesFilter<"Event"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
   }
@@ -11904,7 +11882,7 @@ export namespace Prisma {
     status?: EnumTransactionStatusFilter<"Transaction"> | $Enums.TransactionStatus
     id_user?: IntFilter<"Transaction"> | number
     id_event?: IntFilter<"Transaction"> | number
-    id_promotion?: IntFilter<"Transaction"> | number
+    id_promotion?: IntNullableFilter<"Transaction"> | number | null
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     expiredAt?: DateTimeFilter<"Transaction"> | Date | string
     updatedAt?: DateTimeFilter<"Transaction"> | Date | string
@@ -11925,7 +11903,7 @@ export namespace Prisma {
     status?: SortOrder
     id_user?: SortOrder
     id_event?: SortOrder
-    id_promotion?: SortOrder
+    id_promotion?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     expiredAt?: SortOrder
     updatedAt?: SortOrder
@@ -11949,7 +11927,7 @@ export namespace Prisma {
     status?: EnumTransactionStatusFilter<"Transaction"> | $Enums.TransactionStatus
     id_user?: IntFilter<"Transaction"> | number
     id_event?: IntFilter<"Transaction"> | number
-    id_promotion?: IntFilter<"Transaction"> | number
+    id_promotion?: IntNullableFilter<"Transaction"> | number | null
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     expiredAt?: DateTimeFilter<"Transaction"> | Date | string
     updatedAt?: DateTimeFilter<"Transaction"> | Date | string
@@ -11970,7 +11948,7 @@ export namespace Prisma {
     status?: SortOrder
     id_user?: SortOrder
     id_event?: SortOrder
-    id_promotion?: SortOrder
+    id_promotion?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     expiredAt?: SortOrder
     updatedAt?: SortOrder
@@ -11994,7 +11972,7 @@ export namespace Prisma {
     status?: EnumTransactionStatusWithAggregatesFilter<"Transaction"> | $Enums.TransactionStatus
     id_user?: IntWithAggregatesFilter<"Transaction"> | number
     id_event?: IntWithAggregatesFilter<"Transaction"> | number
-    id_promotion?: IntWithAggregatesFilter<"Transaction"> | number
+    id_promotion?: IntNullableWithAggregatesFilter<"Transaction"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
     expiredAt?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
@@ -12126,7 +12104,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -12153,7 +12131,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -12177,7 +12155,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12204,7 +12182,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12230,7 +12208,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -12251,7 +12229,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12274,7 +12252,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12292,7 +12270,6 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
-    id_category: number
     createdAt?: Date | string
     updatedAt?: Date | string
     organizer: UserCreateNestedOneWithoutEventsInput
@@ -12314,7 +12291,6 @@ export namespace Prisma {
     image: string
     id_organizer: number
     id_city: number
-    id_category: number
     createdAt?: Date | string
     updatedAt?: Date | string
     categories?: CategoriesOnEventsUncheckedCreateNestedManyWithoutEventInput
@@ -12331,7 +12307,6 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: UserUpdateOneRequiredWithoutEventsNestedInput
@@ -12353,7 +12328,6 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     id_organizer?: IntFieldUpdateOperationsInput | number
     id_city?: IntFieldUpdateOperationsInput | number
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     categories?: CategoriesOnEventsUncheckedUpdateManyWithoutEventNestedInput
@@ -12373,7 +12347,6 @@ export namespace Prisma {
     image: string
     id_organizer: number
     id_city: number
-    id_category: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -12387,7 +12360,6 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12404,7 +12376,6 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     id_organizer?: IntFieldUpdateOperationsInput | number
     id_city?: IntFieldUpdateOperationsInput | number
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12610,7 +12581,7 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     createdAt?: Date | string
@@ -12628,12 +12599,12 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     id_user: number
     id_event: number
-    id_promotion: number
+    id_promotion?: number | null
     createdAt?: Date | string
     expiredAt?: Date | string
     updatedAt?: Date | string
@@ -12668,7 +12639,7 @@ export namespace Prisma {
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
     id_user?: IntFieldUpdateOperationsInput | number
     id_event?: IntFieldUpdateOperationsInput | number
-    id_promotion?: IntFieldUpdateOperationsInput | number
+    id_promotion?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12681,12 +12652,12 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     id_user: number
     id_event: number
-    id_promotion: number
+    id_promotion?: number | null
     createdAt?: Date | string
     expiredAt?: Date | string
     updatedAt?: Date | string
@@ -12714,7 +12685,7 @@ export namespace Prisma {
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
     id_user?: IntFieldUpdateOperationsInput | number
     id_event?: IntFieldUpdateOperationsInput | number
-    id_promotion?: IntFieldUpdateOperationsInput | number
+    id_promotion?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12883,6 +12854,17 @@ export namespace Prisma {
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -13083,6 +13065,20 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -13106,17 +13102,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type UserScalarRelationFilter = {
@@ -13161,7 +13146,6 @@ export namespace Prisma {
     image?: SortOrder
     id_organizer?: SortOrder
     id_city?: SortOrder
-    id_category?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -13171,7 +13155,6 @@ export namespace Prisma {
     price?: SortOrder
     id_organizer?: SortOrder
     id_city?: SortOrder
-    id_category?: SortOrder
   }
 
   export type EventMaxOrderByAggregateInput = {
@@ -13186,7 +13169,6 @@ export namespace Prisma {
     image?: SortOrder
     id_organizer?: SortOrder
     id_city?: SortOrder
-    id_category?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -13203,7 +13185,6 @@ export namespace Prisma {
     image?: SortOrder
     id_organizer?: SortOrder
     id_city?: SortOrder
-    id_category?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -13213,7 +13194,6 @@ export namespace Prisma {
     price?: SortOrder
     id_organizer?: SortOrder
     id_city?: SortOrder
-    id_category?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -13230,20 +13210,6 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type CategoryCountOrderByAggregateInput = {
@@ -13643,6 +13609,10 @@ export namespace Prisma {
     set?: boolean
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -13801,10 +13771,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
   }
 
   export type UserUpdateOneRequiredWithoutEventsNestedInput = {
@@ -14266,6 +14232,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -14367,6 +14344,20 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -14379,17 +14370,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -14417,20 +14397,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumTransactionStatusFilter<$PrismaModel = never> = {
@@ -14462,7 +14428,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -14488,7 +14454,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -14516,7 +14482,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -14541,7 +14507,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -14572,7 +14538,6 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
-    id_category: number
     createdAt?: Date | string
     updatedAt?: Date | string
     city: CityCreateNestedOneWithoutEventsInput
@@ -14592,7 +14557,6 @@ export namespace Prisma {
     endDate?: Date | string | null
     image: string
     id_city: number
-    id_category: number
     createdAt?: Date | string
     updatedAt?: Date | string
     categories?: CategoriesOnEventsUncheckedCreateNestedManyWithoutEventInput
@@ -14614,7 +14578,7 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     createdAt?: Date | string
@@ -14631,11 +14595,11 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     id_event: number
-    id_promotion: number
+    id_promotion?: number | null
     createdAt?: Date | string
     expiredAt?: Date | string
     updatedAt?: Date | string
@@ -14676,7 +14640,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14702,7 +14666,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14746,7 +14710,7 @@ export namespace Prisma {
     pointBalance?: IntFilter<"User"> | number
     expiredDates?: DateTimeNullableListFilter<"User">
     coupon?: BoolFilter<"User"> | boolean
-    couponExpiredAt?: DateTimeFilter<"User"> | Date | string
+    couponExpiredAt?: DateTimeNullableFilter<"User"> | Date | string | null
     organizationName?: StringNullableFilter<"User"> | string | null
     organizationEmail?: StringNullableFilter<"User"> | string | null
     organizationPhone?: StringNullableFilter<"User"> | string | null
@@ -14786,7 +14750,6 @@ export namespace Prisma {
     image?: StringFilter<"Event"> | string
     id_organizer?: IntFilter<"Event"> | number
     id_city?: IntFilter<"Event"> | number
-    id_category?: IntFilter<"Event"> | number
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
   }
@@ -14820,7 +14783,7 @@ export namespace Prisma {
     status?: EnumTransactionStatusFilter<"Transaction"> | $Enums.TransactionStatus
     id_user?: IntFilter<"Transaction"> | number
     id_event?: IntFilter<"Transaction"> | number
-    id_promotion?: IntFilter<"Transaction"> | number
+    id_promotion?: IntNullableFilter<"Transaction"> | number | null
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     expiredAt?: DateTimeFilter<"Transaction"> | Date | string
     updatedAt?: DateTimeFilter<"Transaction"> | Date | string
@@ -14838,7 +14801,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -14864,7 +14827,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -14951,7 +14914,7 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     createdAt?: Date | string
@@ -14968,11 +14931,11 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     id_user: number
-    id_promotion: number
+    id_promotion?: number | null
     createdAt?: Date | string
     expiredAt?: Date | string
     updatedAt?: Date | string
@@ -15013,7 +14976,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15039,7 +15002,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15185,7 +15148,6 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
-    id_category: number
     createdAt?: Date | string
     updatedAt?: Date | string
     organizer: UserCreateNestedOneWithoutEventsInput
@@ -15206,7 +15168,6 @@ export namespace Prisma {
     image: string
     id_organizer: number
     id_city: number
-    id_category: number
     createdAt?: Date | string
     updatedAt?: Date | string
     promotions?: PromotionUncheckedCreateNestedManyWithoutEventInput
@@ -15252,7 +15213,6 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: UserUpdateOneRequiredWithoutEventsNestedInput
@@ -15273,7 +15233,6 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     id_organizer?: IntFieldUpdateOperationsInput | number
     id_city?: IntFieldUpdateOperationsInput | number
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     promotions?: PromotionUncheckedUpdateManyWithoutEventNestedInput
@@ -15309,7 +15268,6 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
-    id_category: number
     createdAt?: Date | string
     updatedAt?: Date | string
     organizer: UserCreateNestedOneWithoutEventsInput
@@ -15329,7 +15287,6 @@ export namespace Prisma {
     endDate?: Date | string | null
     image: string
     id_organizer: number
-    id_category: number
     createdAt?: Date | string
     updatedAt?: Date | string
     categories?: CategoriesOnEventsUncheckedCreateNestedManyWithoutEventInput
@@ -15372,7 +15329,6 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
-    id_category: number
     createdAt?: Date | string
     updatedAt?: Date | string
     organizer: UserCreateNestedOneWithoutEventsInput
@@ -15393,7 +15349,6 @@ export namespace Prisma {
     image: string
     id_organizer: number
     id_city: number
-    id_category: number
     createdAt?: Date | string
     updatedAt?: Date | string
     categories?: CategoriesOnEventsUncheckedCreateNestedManyWithoutEventInput
@@ -15409,7 +15364,7 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     createdAt?: Date | string
@@ -15426,7 +15381,7 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     id_user: number
@@ -15468,7 +15423,6 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: UserUpdateOneRequiredWithoutEventsNestedInput
@@ -15489,7 +15443,6 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     id_organizer?: IntFieldUpdateOperationsInput | number
     id_city?: IntFieldUpdateOperationsInput | number
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     categories?: CategoriesOnEventsUncheckedUpdateManyWithoutEventNestedInput
@@ -15524,7 +15477,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -15550,7 +15503,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -15575,7 +15528,6 @@ export namespace Prisma {
     startDate?: Date | string | null
     endDate?: Date | string | null
     image: string
-    id_category: number
     createdAt?: Date | string
     updatedAt?: Date | string
     organizer: UserCreateNestedOneWithoutEventsInput
@@ -15596,7 +15548,6 @@ export namespace Prisma {
     image: string
     id_organizer: number
     id_city: number
-    id_category: number
     createdAt?: Date | string
     updatedAt?: Date | string
     categories?: CategoriesOnEventsUncheckedCreateNestedManyWithoutEventInput
@@ -15697,7 +15648,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15723,7 +15674,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15754,7 +15705,6 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: UserUpdateOneRequiredWithoutEventsNestedInput
@@ -15775,7 +15725,6 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     id_organizer?: IntFieldUpdateOperationsInput | number
     id_city?: IntFieldUpdateOperationsInput | number
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     categories?: CategoriesOnEventsUncheckedUpdateManyWithoutEventNestedInput
@@ -15870,7 +15819,7 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     createdAt?: Date | string
@@ -15887,12 +15836,12 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     id_user: number
     id_event: number
-    id_promotion: number
+    id_promotion?: number | null
     createdAt?: Date | string
     expiredAt?: Date | string
     updatedAt?: Date | string
@@ -15941,7 +15890,7 @@ export namespace Prisma {
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
     id_user?: IntFieldUpdateOperationsInput | number
     id_event?: IntFieldUpdateOperationsInput | number
-    id_promotion?: IntFieldUpdateOperationsInput | number
+    id_promotion?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15952,7 +15901,7 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     createdAt?: Date | string
@@ -15969,12 +15918,12 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     id_user: number
     id_event: number
-    id_promotion: number
+    id_promotion?: number | null
     createdAt?: Date | string
     expiredAt?: Date | string
     updatedAt?: Date | string
@@ -16023,7 +15972,7 @@ export namespace Prisma {
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
     id_user?: IntFieldUpdateOperationsInput | number
     id_event?: IntFieldUpdateOperationsInput | number
-    id_promotion?: IntFieldUpdateOperationsInput | number
+    id_promotion?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16043,7 +15992,7 @@ export namespace Prisma {
     pointBalance?: number
     expiredDates?: UserCreateexpiredDatesInput | Date[] | string[]
     coupon?: boolean
-    couponExpiredAt?: Date | string
+    couponExpiredAt?: Date | string | null
     organizationName?: string | null
     organizationEmail?: string | null
     organizationPhone?: string | null
@@ -16063,7 +16012,6 @@ export namespace Prisma {
     endDate?: Date | string | null
     image: string
     id_city: number
-    id_category: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -16073,11 +16021,11 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     id_event: number
-    id_promotion: number
+    id_promotion?: number | null
     createdAt?: Date | string
     expiredAt?: Date | string
     updatedAt?: Date | string
@@ -16095,7 +16043,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16120,7 +16068,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16145,7 +16093,7 @@ export namespace Prisma {
     pointBalance?: IntFieldUpdateOperationsInput | number
     expiredDates?: UserUpdateexpiredDatesInput | Date[] | string[]
     coupon?: BoolFieldUpdateOperationsInput | boolean
-    couponExpiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    couponExpiredAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     organizationName?: NullableStringFieldUpdateOperationsInput | string | null
     organizationEmail?: NullableStringFieldUpdateOperationsInput | string | null
     organizationPhone?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16163,7 +16111,6 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     city?: CityUpdateOneRequiredWithoutEventsNestedInput
@@ -16183,7 +16130,6 @@ export namespace Prisma {
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
     id_city?: IntFieldUpdateOperationsInput | number
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     categories?: CategoriesOnEventsUncheckedUpdateManyWithoutEventNestedInput
@@ -16202,7 +16148,6 @@ export namespace Prisma {
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
     id_city?: IntFieldUpdateOperationsInput | number
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16232,7 +16177,7 @@ export namespace Prisma {
     total?: IntFieldUpdateOperationsInput | number
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
     id_event?: IntFieldUpdateOperationsInput | number
-    id_promotion?: IntFieldUpdateOperationsInput | number
+    id_promotion?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16249,7 +16194,7 @@ export namespace Prisma {
     total?: IntFieldUpdateOperationsInput | number
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
     id_event?: IntFieldUpdateOperationsInput | number
-    id_promotion?: IntFieldUpdateOperationsInput | number
+    id_promotion?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16276,11 +16221,11 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     id_user: number
-    id_promotion: number
+    id_promotion?: number | null
     createdAt?: Date | string
     expiredAt?: Date | string
     updatedAt?: Date | string
@@ -16360,7 +16305,7 @@ export namespace Prisma {
     total?: IntFieldUpdateOperationsInput | number
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
     id_user?: IntFieldUpdateOperationsInput | number
-    id_promotion?: IntFieldUpdateOperationsInput | number
+    id_promotion?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16377,7 +16322,7 @@ export namespace Prisma {
     total?: IntFieldUpdateOperationsInput | number
     status?: EnumTransactionStatusFieldUpdateOperationsInput | $Enums.TransactionStatus
     id_user?: IntFieldUpdateOperationsInput | number
-    id_promotion?: IntFieldUpdateOperationsInput | number
+    id_promotion?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     expiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16410,7 +16355,6 @@ export namespace Prisma {
     endDate?: Date | string | null
     image: string
     id_organizer: number
-    id_category: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -16424,7 +16368,6 @@ export namespace Prisma {
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     organizer?: UserUpdateOneRequiredWithoutEventsNestedInput
@@ -16444,7 +16387,6 @@ export namespace Prisma {
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
     id_organizer?: IntFieldUpdateOperationsInput | number
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     categories?: CategoriesOnEventsUncheckedUpdateManyWithoutEventNestedInput
@@ -16463,7 +16405,6 @@ export namespace Prisma {
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: StringFieldUpdateOperationsInput | string
     id_organizer?: IntFieldUpdateOperationsInput | number
-    id_category?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16473,7 +16414,7 @@ export namespace Prisma {
     quantity?: number
     subtotal: number
     referralCouponIsUsed?: boolean
-    pointsUsed: number
+    pointsUsed?: number
     total: number
     status?: $Enums.TransactionStatus
     id_user: number
