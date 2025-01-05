@@ -10549,10 +10549,10 @@ export namespace Prisma {
 
   export type EventWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    title?: string
     AND?: EventWhereInput | EventWhereInput[]
     OR?: EventWhereInput[]
     NOT?: EventWhereInput | EventWhereInput[]
-    title?: StringFilter<"Event"> | string
     desc?: StringFilter<"Event"> | string
     isPaidEvent?: BoolFilter<"Event"> | boolean
     price?: IntNullableFilter<"Event"> | number | null
@@ -10570,7 +10570,7 @@ export namespace Prisma {
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     promotions?: PromotionListRelationFilter
     transactions?: TransactionListRelationFilter
-  }, "id">
+  }, "id" | "title">
 
   export type EventOrderByWithAggregationInput = {
     id?: SortOrder
