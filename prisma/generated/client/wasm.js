@@ -152,6 +152,7 @@ exports.Prisma.EventScalarFieldEnum = {
   image: 'image',
   id_organizer: 'id_organizer',
   id_city: 'id_city',
+  id_category: 'id_category',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -159,11 +160,6 @@ exports.Prisma.EventScalarFieldEnum = {
 exports.Prisma.CategoryScalarFieldEnum = {
   id: 'id',
   name: 'name'
-};
-
-exports.Prisma.CategoriesOnEventsScalarFieldEnum = {
-  id_event: 'id_event',
-  id_category: 'id_category'
 };
 
 exports.Prisma.CityScalarFieldEnum = {
@@ -245,7 +241,6 @@ exports.Prisma.ModelName = {
   User: 'User',
   Event: 'Event',
   Category: 'Category',
-  CategoriesOnEvents: 'CategoriesOnEvents',
   City: 'City',
   Promotion: 'Promotion',
   Transaction: 'Transaction',
