@@ -54,7 +54,7 @@ enum Role {
 
 model Event {
   id          Int       @id @default(autoincrement())
-  title       String
+  title       String @unique
   desc        String
   isPaidEvent Boolean
   price       Int?

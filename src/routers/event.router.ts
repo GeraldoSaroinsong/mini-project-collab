@@ -24,8 +24,8 @@ export class EventRouter {
             this.eventController.updateEvent
         );
         this.route.get("/", this.eventController.getEvent);
-        this.route.get("/id/:id", this.eventController.getEventById);
-        this.route.delete("/delete/:id", this.eventController.deleteEvent);
+        this.route.get("/detail/:title", this.eventController.getEventById);
+        this.route.delete("/delete/:title", this.eventController.deleteEvent);
     }
 
     public getRouter(): Router {
