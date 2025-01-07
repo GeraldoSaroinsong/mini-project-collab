@@ -81,9 +81,11 @@ class ServiceUser {
             const token = tokenGenerator(findUser);
 
             return {
+                id: findUser.id,
                 name: findUser.name,
                 email: findUser.email,
                 username: findUser.username,
+                role: findUser.role,
                 token,
             };
         } catch (error: any) {
