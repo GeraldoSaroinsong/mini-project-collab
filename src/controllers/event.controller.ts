@@ -92,7 +92,30 @@ export class EventController {
     }
   }
 
-  async getEventById(
+  async getEventMany(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> {
+    try {
+      const event = await prisma.event.findMany();
+      return responseHandler.succes(
+        res,
+        "Succesfully retrieved event data",
+        200,
+        event
+      );
+    } catch (error) {
+      return responseHandler.error(
+        res,
+        "Failed to retrieve event data",
+        500,
+        error
+      );
+    }
+  }
+
+  async getEventByTitle(
     req: Request,
     res: Response,
     next: NextFunction
@@ -100,7 +123,7 @@ export class EventController {
     try {
       const event = await prisma.event.findUnique({
         where: {
-          id: parseInt(req.params.id),
+          title: req.params.title,
         },
       });
       return responseHandler.succes(
