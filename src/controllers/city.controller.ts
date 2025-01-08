@@ -41,6 +41,33 @@ export class CityController {
     }
   }
 
+  async getCityByName(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> {
+    try {
+      const city = await prisma.city.findFirst({
+        where: {
+          name: req.params.name,
+        },
+      });
+      return responseHandler.succes(
+        res,
+        "Succesfully retrieved city data",
+        200,
+        city
+      );
+    } catch (error) {
+      return responseHandler.error(
+        res,
+        "Failed to retrieve city data",
+        500,
+        error
+      );
+    }
+  }
+
   async getCityMany(
     req: Request,
     res: Response,
