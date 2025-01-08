@@ -44,6 +44,17 @@ class CityController {
             }
         });
     }
+    getCityMany(req, res, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const city = yield prisma_1.prisma.city.findMany();
+                return response_1.default.succes(res, "Succesfully retrieved city data", 200, city);
+            }
+            catch (error) {
+                return response_1.default.error(res, "Failed to retrieve city data", 500, error);
+            }
+        });
+    }
     updateCity(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
