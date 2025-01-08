@@ -13,6 +13,8 @@ export class CityRouter {
 
   private initializeRoutes(): void {
     this.route.post("/", this.cityController.addCity);
+    this.route.get("/all", this.cityController.getCityMany);
+    this.route.get("/:name", this.cityController.getCityByName);
     this.route.get("/:id", this.cityController.getCityById);
     this.route.patch("/:id", this.cityController.updateCity);
     this.route.delete("/:id", this.cityController.deleteCity);

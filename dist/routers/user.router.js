@@ -3,11 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserRouter = void 0;
 const express_1 = require("express");
 const user_controller_1 = require("../controllers/user.controller");
-const validator_1 = require("../middleware/validator");
+const user_validator_1 = require("../middleware/validators/user.validator");
 const verifyToken_1 = require("../middleware/verifyToken");
-// ? IMPORT CONTROLLERS(AND MIDDLEWARES). CONTOH:
-// import { UserController } from "../controllers/user.controller";
-// import { regisValidation } from "../middleware/validator";
 class UserRouter {
     constructor() {
         // ? INSTANTIATE ROUTER
@@ -18,13 +15,12 @@ class UserRouter {
     }
     initializeRoutes() {
         // ? DEFINE ENDPOINTS HERE. CONTOH
-        this.route.post("/register", validator_1.regisValidation, this.userController.registerUser);
-        this.route.post("/login", validator_1.loginValidation, this.userController.loginUser);
-        this.route.patch("/update/:id", this.userController.updateUser);
-        this.route.delete("/delete/:id", this.userController.deleteUser);
+        this.route.post("/register", user_validator_1.regisValidation, this.userController.registerUser);
+        this.route.post("/login", user_validator_1.loginValidation, this.userController.loginUser);
+        this.route.patch("/update", verifyToken_1.verifyToken, this.userController.updateUser);
         this.route.post("/keep-login", verifyToken_1.verifyToken, this.userController.keepLoginUser);
-
-        this.route.get("/user/:id", this.userController.uniqueUser);
+        this.route.delete("/delete/:id", this.userController.deleteUser);
+        this.route.get("/id/:id", this.userController.uniqueUser);
     }
     getRouter() {
         return this.route;

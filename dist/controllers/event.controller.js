@@ -19,8 +19,9 @@ class EventController {
     createEvent(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                const id_organizer = parseInt(res.locals.decrypt.id);
                 const event = yield prisma_1.prisma.event.create({
-                    data: req.body,
+                    data: Object.assign(Object.assign({}, req.body), { id_organizer }),
                 });
                 return response_1.default.succes(res, "Created event succesfully", 201, event);
             }
@@ -33,8 +34,41 @@ class EventController {
     getEvent(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const event = yield prisma_1.prisma.event.findMany();
-                response_1.default.succes(res, "Succesfully updated event", 200, event);
+                const { city, title, isPaidEvent, category, sortBy, order = "asc", limit, skip, } = req.query;
+                const filters = {};
+                if (city) {
+                    filters.city = {
+                        name: {
+                            contains: city,
+                        },
+                    };
+                }
+                if (title) {
+                    filters.title = { contains: title };
+                }
+                if (category) {
+                    filters.category = {
+                        name: {
+                            contains: category,
+                        },
+                    };
+                }
+                if (isPaidEvent !== undefined) {
+                    filters.isPaidEvent = isPaidEvent === "true";
+                }
+                const sorting = {};
+                if (sortBy) {
+                    sorting[sortBy] = order;
+                }
+                const event = yield prisma_1.prisma.event.findMany({
+                    where: filters,
+                    include: {
+                        city: true,
+                        category: true,
+                    },
+                });
+                console.log(event);
+                response_1.default.succes(res, "Succesfully retrived event", 200, event);
             }
             catch (error) {
                 // return responseHandler.error(res, "Failed top update event", 500, error);
@@ -42,12 +76,23 @@ class EventController {
             }
         });
     }
-    getEventById(req, res, next) {
+    getEventMany(req, res, next) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const event = yield prisma_1.prisma.event.findMany();
+                return response_1.default.succes(res, "Succesfully retrieved event data", 200, event);
+            }
+            catch (error) {
+                return response_1.default.error(res, "Failed to retrieve event data", 500, error);
+            }
+        });
+    }
+    getEventByTitle(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const event = yield prisma_1.prisma.event.findUnique({
                     where: {
-                        id: parseInt(req.params.id),
+                        title: req.params.title,
                     },
                 });
                 return response_1.default.succes(res, "Succesfully retrieved event data", 200, event);

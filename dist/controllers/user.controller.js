@@ -17,18 +17,13 @@ const response_1 = __importDefault(require("../utils/response"));
 const user_service_1 = __importDefault(require("../services/user.service"));
 const user_dal_1 = __importDefault(require("../dal/user.dal"));
 const tokenGenerator_1 = require("../utils/tokenGenerator");
-// CONTOH IMPORT LAIN
-// import { hashPassword } from "../utils/hashPassword";
-// import { compareSync } from "bcrypt";
-// import { sign } from "jsonwebtoken";
 class UserController {
-    // ? YOUR METHODS HERE
     registerUser(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 // ? YOUR CODE HERE
-                const result = yield user_service_1.default.serviceUserRegsiter(req.body);
-                return response_1.default.succes(res, "SUCCESSFULLY CREATED NEW USER", 201, { result });
+                const data = yield user_service_1.default.serviceUserRegsiter(req.body);
+                return response_1.default.succes(res, "SUCCESSFULLY CREATED NEW USER", 201, { data });
             }
             catch (error) {
                 // console.log(error);
@@ -40,8 +35,8 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 // ? YOUR CODE HERE
-                const result = yield user_service_1.default.serviceUserLogin(req.body);
-                return response_1.default.succes(res, "THIS CONTROLLER IS WORKING", 201, { result });
+                const data = yield user_service_1.default.serviceUserLogin(req.body);
+                return response_1.default.succes(res, "THIS CONTROLLER IS WORKING", 201, { data });
             }
             catch (error) {
                 // console.log(error);
@@ -52,9 +47,9 @@ class UserController {
     updateUser(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                // ? YOUR CODE HERE
-                const result = yield user_service_1.default.serviceUserUpdate(parseInt(req.params.id), req.body);
-                return response_1.default.succes(res, "THIS CONTROLLER IS WORKING", 201, { result });
+                const id = parseInt(res.locals.decrypt.id);
+                const data = yield user_service_1.default.serviceUserUpdate(id, req.body);
+                return response_1.default.succes(res, "THIS CONTROLLER IS WORKING", 201, { data });
             }
             catch (error) {
                 // console.log(error);
@@ -66,8 +61,8 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 // ? YOUR CODE HERE
-                const result = yield user_service_1.default.serviceUserDelete(parseInt(req.params.id));
-                return response_1.default.succes(res, "THIS CONTROLLER IS WORKING", 201, { result });
+                const data = yield user_service_1.default.serviceUserDelete(parseInt(req.params.id));
+                return response_1.default.succes(res, "THIS CONTROLLER IS WORKING", 201, { data });
             }
             catch (error) {
                 // console.log(error);
@@ -104,8 +99,10 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 // ? YOUR CODE HERE
-                const result = yield user_service_1.default.serviceUserLogin(req.body);
-                return response_1.default.succes(res, "THIS CONTROLLER IS WORKING", 201, { result });
+                const data = yield user_dal_1.default.dalUserId({
+                    id: parseInt(req.params.id),
+                });
+                return response_1.default.succes(res, "THIS CONTROLLER IS WORKING", 201, { data });
             }
             catch (error) {
                 // console.log(error);

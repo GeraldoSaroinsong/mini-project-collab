@@ -230,7 +230,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\purwadhika\\modul-03-back-end\\mipro\\mini-project-collab\\prisma\\generated\\client",
+      "value": "D:\\Purwadhika\\Module 3 - Back End\\Mini Project\\minpro-collab\\prisma\\generated\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -244,7 +244,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\purwadhika\\modul-03-back-end\\mipro\\mini-project-collab\\prisma\\schema.prisma",
+    "sourceFilePath": "D:\\Purwadhika\\Module 3 - Back End\\Mini Project\\minpro-collab\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
