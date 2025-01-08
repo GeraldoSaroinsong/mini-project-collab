@@ -17,7 +17,6 @@ const hashPassword_1 = require("../utils/hashPassword");
 const referralGenerator_1 = require("../utils/referralGenerator");
 const bcrypt_1 = require("bcrypt");
 const tokenGenerator_1 = require("../utils/tokenGenerator");
-// ? INTERFACE IF NEEDED
 class ServiceUser {
     // ? YOUR METHODS HERE
     serviceUserRegsiter(dataUser) {
@@ -36,8 +35,16 @@ class ServiceUser {
                 // ? atribut yg perlu diproses
                 const hashedPassword = yield (0, hashPassword_1.hashPassword)(dataUser.password);
                 const newRefferalCode = (0, referralGenerator_1.referralGenerator)(dataUser.username);
-                // ? PEMANGGILAN DAL HERE
-                const newUser = yield user_dal_1.default.dalUserRegister(Object.assign(Object.assign({}, dataUser), { password: hashedPassword, referralCode: newRefferalCode }));
+                let newUser;
+                // ? refcode
+                if (dataUser.usingReferralCode) {
+                    // ? PEMANGGILAN DAL HERE
+                    newUser = yield user_dal_1.default.dalUserRegisterRefCode(Object.assign(Object.assign({}, dataUser), { password: hashedPassword, referralCode: newRefferalCode }));
+                }
+                else {
+                    // ? PEMANGGILAN DAL HERE
+                    newUser = yield user_dal_1.default.dalUserRegister(Object.assign(Object.assign({}, dataUser), { password: hashedPassword, referralCode: newRefferalCode }));
+                }
                 const token = (0, tokenGenerator_1.tokenGenerator)(newUser);
                 return { newUser, token };
             }
@@ -67,9 +74,11 @@ class ServiceUser {
                 }
                 const token = (0, tokenGenerator_1.tokenGenerator)(findUser);
                 return {
+                    id: findUser.id,
                     name: findUser.name,
                     email: findUser.email,
                     username: findUser.username,
+                    role: findUser.role,
                     token,
                 };
             }
@@ -81,13 +90,6 @@ class ServiceUser {
     serviceUserUpdate(id, dataUser) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                // ? YOUR BUSINESS CODE HERE
-                if (true) {
-                    console.log("INI ADALAH PERKONDISIAN DI DALAM SERVICE");
-                }
-                else {
-                    throw { rc: 400, message: "Error di perkondisian service" };
-                }
                 // ? PEMANGGILAN DAL HERE
                 const updatedUser = yield user_dal_1.default.dalUserUpdate(id, dataUser);
                 return updatedUser;
@@ -100,13 +102,6 @@ class ServiceUser {
     serviceUserDelete(id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                // ? YOUR BUSINESS CODE HERE
-                if (true) {
-                    console.log("INI ADALAH PERKONDISIAN DI DALAM SERVICE");
-                }
-                else {
-                    throw { rc: 400, message: "Error di perkondisian service" };
-                }
                 // ? PEMANGGILAN DAL HERE
                 const deletedUser = yield user_dal_1.default.dalUserDelete(id);
                 return deletedUser;

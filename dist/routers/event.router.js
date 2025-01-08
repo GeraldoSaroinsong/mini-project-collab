@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EventRouter = void 0;
 const express_1 = require("express");
 const event_controller_1 = require("../controllers/event.controller");
+const verifyToken_1 = require("../middleware/verifyToken");
 class EventRouter {
     constructor() {
         this.eventController = new event_controller_1.EventController();
@@ -11,11 +12,12 @@ class EventRouter {
         this.initializeRoutes();
     }
     initializeRoutes() {
-        this.route.post("/", this.eventController.createEvent);
+        this.route.post("/create", verifyToken_1.verifyTokenOrganizer, this.eventController.createEvent);
+        this.route.patch("/update/:id", verifyToken_1.verifyTokenOrganizer, this.eventController.updateEvent);
         this.route.get("/", this.eventController.getEvent);
-        this.route.get("/:id", this.eventController.getEventById);
-        this.route.patch("/:id", this.eventController.updateEvent);
-        this.route.delete("/:id", this.eventController.deleteEvent);
+        this.route.get("/all", this.eventController.getEventMany);
+        this.route.get("/detail/:title", this.eventController.getEventByTitle);
+        this.route.delete("/delete/:title", this.eventController.deleteEvent);
     }
     getRouter() {
         return this.route;

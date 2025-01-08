@@ -9,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// ? IMPORTS IF NEEDED
 const prisma_1 = require("../config/prisma");
 // ? INTERFACE IF NEEDED
 class DalUser {
@@ -20,6 +19,34 @@ class DalUser {
                 // ? PEMANGGILAN DATABASE(PRISMA) HERE. CONTOH
                 const result = yield prisma_1.prisma.user.create({ data: dataUser });
                 return result;
+            }
+            catch (error) {
+                throw { rc: 400, message: `DAL failed to create new user` };
+            }
+        });
+    }
+    dalUserRegisterRefCode(dataUser) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                // ? PEMANGGILAN DATABASE(PRISMA) HERE. CONTOH
+                if (typeof dataUser.usingReferralCode === "string") {
+                    const bonusPoint = 10000;
+                    const ref = dataUser.usingReferralCode;
+                    const expdate = new Date(new Date().setMonth(new Date().getMonth() + 3));
+                    const result = yield prisma_1.prisma.$transaction([
+                        prisma_1.prisma.user.create({
+                            data: Object.assign(Object.assign({}, dataUser), { coupon: true, couponExpiredAt: expdate }),
+                        }),
+                        prisma_1.prisma.user.update({
+                            where: { referralCode: ref },
+                            data: {
+                                pointBalance: { increment: bonusPoint },
+                                expiredDates: { push: expdate },
+                            },
+                        }),
+                    ]);
+                    return { result };
+                }
             }
             catch (error) {
                 throw { rc: 400, message: `DAL failed to create new user` };
@@ -72,6 +99,29 @@ class DalUser {
             try {
                 // ? PEMANGGILAN DATABASE(PRISMA) HERE. CONTOH
                 const result = yield prisma_1.prisma.user.findUnique({ where: dataUser });
+                return result;
+            }
+            catch (error) {
+                throw error;
+            }
+        });
+    }
+    dalUserId(dataUser) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                // ? PEMANGGILAN DATABASE(PRISMA) HERE. CONTOH
+                const result = yield prisma_1.prisma.user.findUnique({
+                    where: dataUser,
+                    select: {
+                        name: true,
+                        email: true,
+                        username: true,
+                        phone: true,
+                        role: true,
+                        image: true,
+                        pointBalance: true,
+                    },
+                });
                 return result;
             }
             catch (error) {
