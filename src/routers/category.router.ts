@@ -13,7 +13,7 @@ export class CategoryRouter {
 
   private initializeRoutes(): void {
     this.route.post("/", this.categoryController.createCategory);
-    this.route.get("/", this.categoryController.getCategory);
+    this.route.get("/all", this.categoryController.getCategory);
     this.route.get("/:id", this.categoryController.getCategoryById);
     this.route.patch("/:id", this.categoryController.updateCategory);
     this.route.delete("/:id", this.categoryController.deleteCategory);
