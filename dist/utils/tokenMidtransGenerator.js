@@ -14,8 +14,8 @@ const midtrans_node_client_1 = require("midtrans-node-client");
 const tokenMidtransGenerator = (parameter) => __awaiter(void 0, void 0, void 0, function* () {
     let snap = new midtrans_node_client_1.MidtransClient.Snap({
         isProduction: false,
-        serverKey: process.env.SECRET,
-        clientKey: process.env.NEXT_PUBLIC_CLIENT,
+        serverKey: "SB-Mid-server-sQDfXDlqNKvrE8E7pAsJU8hi",
+        clientKey: "SB-Mid-client-JuIn72sBaReyPMcG",
     });
     console.log(process.env.SECRET);
     console.log(process.env.NEXT_PUBLIC_CLIENT);

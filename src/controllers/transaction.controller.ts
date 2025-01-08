@@ -26,8 +26,8 @@ export class TransactionController {
 
       let snap = new MidtransClient.Snap({
         isProduction: false,
-        serverKey: process.env.SECRET,
-        clientKey: process.env.NEXT_PUBLIC_API,
+        serverKey: "SB-Mid-server-sQDfXDlqNKvrE8E7pAsJU8hi",
+        clientKey: "SB-Mid-client-JuIn72sBaReyPMcG",
       });
 
       let parameter = {

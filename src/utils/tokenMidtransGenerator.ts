@@ -5,8 +5,8 @@ export const tokenMidtransGenerator = async (
 ): Promise<string> => {
   let snap = new MidtransClient.Snap({
     isProduction: false,
-    serverKey: process.env.SECRET,
-    clientKey: process.env.NEXT_PUBLIC_CLIENT,
+    serverKey: "SB-Mid-server-sQDfXDlqNKvrE8E7pAsJU8hi",
+    clientKey: "SB-Mid-client-JuIn72sBaReyPMcG",
   });
 
   console.log(process.env.SECRET);

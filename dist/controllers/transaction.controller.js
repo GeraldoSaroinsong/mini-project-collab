@@ -30,8 +30,8 @@ class TransactionController {
                 console.log("NEW TRANSACTION DATA", newTransaction);
                 let snap = new midtrans_node_client_1.MidtransClient.Snap({
                     isProduction: false,
-                    serverKey: process.env.SECRET,
-                    clientKey: process.env.NEXT_PUBLIC_API,
+                    serverKey: "SB-Mid-server-sQDfXDlqNKvrE8E7pAsJU8hi",
+                    clientKey: "SB-Mid-client-JuIn72sBaReyPMcG",
                 });
                 let parameter = {
                     transaction_details: {
