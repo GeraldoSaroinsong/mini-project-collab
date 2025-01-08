@@ -31,20 +31,41 @@ export class TransactionController {
       });
 
       let parameter = {
-        item_details: {
-          id: newTransaction.id_event,
-          price: newTransaction.subtotal,
-          quantity: newTransaction.quantity,
-        },
-        order_details: {
-          order_id: newTransaction.id,
+        transaction_details: {
+          order_id: newTransaction.id.toString(),
           gross_amount: newTransaction.total,
+        },
+        // item_details: {
+        //   id: newTransaction.id_event,
+        //   price: newTransaction.subtotal,
+        //   quantity: newTransaction.quantity,
+        // },
+        // credit_card: {
+        //   secure: true,
+        // },
+      };
+
+      let parameterBener = {
+        transaction_details: {
+          order_id: "YOUR-ORDERID-123456",
+          gross_amount: 10000,
+        },
+        credit_card: {
+          secure: true,
+        },
+        customer_details: {
+          first_name: "budi",
+          last_name: "pratama",
+          email: "budi.pra@example.com",
+          phone: "08111222333",
         },
       };
 
       console.log("PARAMETER", parameter);
 
-      const tokenMidtrans = tokenMidtransGenerator(parameter);
+      const tokenMidtrans = await tokenMidtransGenerator(parameter);
+
+      console.log("TOKEN MID DARI CONTROLLER", tokenMidtrans);
 
       return responseHandler.succes(
         res,

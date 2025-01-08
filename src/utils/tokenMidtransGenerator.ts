@@ -9,8 +9,13 @@ export const tokenMidtransGenerator = async (
     clientKey: process.env.NEXT_PUBLIC_CLIENT,
   });
 
+  console.log(process.env.SECRET);
+  console.log(process.env.NEXT_PUBLIC_CLIENT);
+
   try {
     const tokenMidtrans = await snap.createTransactionToken(parameter);
+    // console.log(tokenMidtrans);
+
     return tokenMidtrans;
   } catch (error) {
     console.log(error);
