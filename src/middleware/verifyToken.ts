@@ -9,7 +9,7 @@ export const verifyToken = (
     try {
         // decrypt token from req.header
         const token = req.headers.authorization?.split(" ")[1];
-        console.log(token);
+        console.log("TOKEN",token);
 
         if (!token) {
             throw { rc: 404, status: false, pesanProteksi: "token not exist" };

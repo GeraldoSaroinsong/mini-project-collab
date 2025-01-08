@@ -10,7 +10,7 @@ export class TransactionController {
     ): Promise<any> {
         try {
             const newTransaction = await prisma.transaction.create({
-                data: {...req.body},
+                data: { ...req.body },
             });
             return responseHandler.succes(
                 res,
