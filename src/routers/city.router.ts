@@ -2,14 +2,14 @@ import { Router } from "express";
 import { CityController } from "../controllers/city.controller";
 
 export class CityRouter {
-  private route: Router;
-  private cityController: CityController;
+    private route: Router;
+    private cityController: CityController;
 
-  constructor() {
-    this.route = Router();
-    this.cityController = new CityController();
-    this.initializeRoutes();
-  }
+    constructor() {
+        this.route = Router();
+        this.cityController = new CityController();
+        this.initializeRoutes();
+    }
 
   private initializeRoutes(): void {
     this.route.post("/", this.cityController.addCity);
@@ -20,7 +20,7 @@ export class CityRouter {
     this.route.delete("/:id", this.cityController.deleteCity);
   }
 
-  public getRouter(): Router {
-    return this.route;
-  }
+    public getRouter(): Router {
+        return this.route;
+    }
 }

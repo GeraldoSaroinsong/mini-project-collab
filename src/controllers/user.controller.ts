@@ -164,4 +164,24 @@ export class UserController {
             return responseHandler.error(res, "CONTROLLER FAILED", 500, error);
         }
     }
+
+    async duit(req: Request, res: Response, next: NextFunction): Promise<any> {
+        try {
+            // ? YOUR CODE HERE
+            const id = parseInt(req.params.id);
+            const data = await prisma.user.findUnique({
+                where: { id },
+                select: { pointBalance: true, coupon: true },
+            });
+            return responseHandler.succes(
+                res,
+                "THIS CONTROLLER IS WORKING",
+                201,
+                { data }
+            );
+        } catch (error: any) {
+            // console.log(error);
+            return responseHandler.error(res, "CONTROLLER FAILED", 500, error);
+        }
+    }
 }
