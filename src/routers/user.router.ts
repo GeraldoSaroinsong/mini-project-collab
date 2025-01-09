@@ -44,6 +44,7 @@ export class UserRouter {
         );
         this.route.delete("/delete/:id", this.userController.deleteUser);
         this.route.get("/id/:id", this.userController.uniqueUser);
+        this.route.get("/refcode", this.userController.refCode);
     }
 
     public getRouter(): Router {
