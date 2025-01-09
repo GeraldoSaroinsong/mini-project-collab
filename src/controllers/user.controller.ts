@@ -5,6 +5,7 @@ import { parse } from "path";
 import { sign } from "jsonwebtoken";
 import userDal from "../dal/user.dal";
 import { tokenGenerator } from "../utils/tokenGenerator";
+import { prisma } from "../config/prisma";
 
 export class UserController {
     async registerUser(
@@ -129,6 +130,28 @@ export class UserController {
             // ? YOUR CODE HERE
             const data = await userDal.dalUserId({
                 id: parseInt(req.params.id),
+            });
+            return responseHandler.succes(
+                res,
+                "THIS CONTROLLER IS WORKING",
+                201,
+                { data }
+            );
+        } catch (error: any) {
+            // console.log(error);
+            return responseHandler.error(res, "CONTROLLER FAILED", 500, error);
+        }
+    }
+
+    async refCode(
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ): Promise<any> {
+        try {
+            // ? YOUR CODE HERE
+            const data = await prisma.user.findMany({
+                select: { referralCode: true },
             });
             return responseHandler.succes(
                 res,

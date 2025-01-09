@@ -47,7 +47,7 @@ class ServiceUser {
 
             const token = tokenGenerator(newUser);
 
-            return { newUser, token };
+            return { ...newUser, token };
         } catch (error: any) {
             throw { rc: 500, message: `register controller error` };
         }
